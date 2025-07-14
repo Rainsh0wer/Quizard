@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuizardApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a1e92ed4b1a7d4825012daddfdd6dd7c431e0de7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8772c6e7202582d849ac8d71df09b688a8924be3")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuizardApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuizardApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

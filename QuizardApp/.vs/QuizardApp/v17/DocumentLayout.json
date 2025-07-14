@@ -3,24 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\registerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:registerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\registerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:registerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\models\\quizardcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:models\\quizardcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|c:\\users\\asus\\downloads\\csdtime\\quizard\\quizardapp\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}|QuizardApp.csproj|solutionrelative:assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,21 +62,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 7,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "QuizardContext.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\Models\\QuizardContext.cs",
-              "RelativeDocumentMoniker": "Models\\QuizardContext.cs",
-              "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\Models\\QuizardContext.cs",
-              "RelativeToolTip": "Models\\QuizardContext.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAYwDUAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T01:21:25.811Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -70,29 +89,148 @@
               "Name": "ST:1:0:{ebe3f1d5-feac-4131-bf03-0e85ffb89a89}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:4:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RegisterPage.xaml",
+              "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\RegisterPage.xaml",
+              "RelativeDocumentMoniker": "RegisterPage.xaml",
+              "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\RegisterPage.xaml",
+              "RelativeToolTip": "RegisterPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-07-14T15:43:42.088Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:5:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginPage.xaml",
+              "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\LoginPage.xaml",
+              "RelativeDocumentMoniker": "LoginPage.xaml",
+              "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\LoginPage.xaml",
+              "RelativeToolTip": "LoginPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-07-14T06:35:37.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RegisterPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\RegisterPage.xaml.cs",
+              "RelativeDocumentMoniker": "RegisterPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\RegisterPage.xaml.cs",
+              "RelativeToolTip": "RegisterPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T16:34:40.688Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T16:36:10.979Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-07-14T01:08:54.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\LoginPage.xaml.cs",
+              "RelativeDocumentMoniker": "LoginPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\LoginPage.xaml.cs",
+              "RelativeToolTip": "LoginPage.xaml.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAcwBgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T06:35:53.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "QuizardContext.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\Models\\QuizardContext.cs",
+              "RelativeDocumentMoniker": "Models\\QuizardContext.cs",
+              "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\Models\\QuizardContext.cs",
+              "RelativeToolTip": "Models\\QuizardContext.cs",
+              "ViewState": "AgIAAAEBAAAAAAAAAAAmwBIBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T01:21:25.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T06:38:21.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\ViewModels\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "ViewModels\\RelayCommand.cs",
+              "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\ViewModels\\RelayCommand.cs",
+              "RelativeToolTip": "ViewModels\\RelayCommand.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAUwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T06:39:13.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\ViewModels\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\ViewModels\\RegisterViewModel.cs",
+              "RelativeToolTip": "ViewModels\\RegisterViewModel.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAUwHUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T16:01:33.674Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-07-14T01:17:30.187Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
@@ -104,28 +242,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 12,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "AssemblyInfo.cs",
               "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\AssemblyInfo.cs",
               "RelativeToolTip": "AssemblyInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T01:08:53.405Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-07-14T01:08:54.325Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-14T01:08:53.405Z"
             }
           ]
         }
