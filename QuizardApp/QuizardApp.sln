@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizardApp", "QuizardApp.csproj", "{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3EF9D33-D852-4B61-9DAE-F609D5FA9650}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B04A4BC-E417-4F0D-A299-DF9B7C7AE540}
+	EndGlobalSection
+EndGlobal
