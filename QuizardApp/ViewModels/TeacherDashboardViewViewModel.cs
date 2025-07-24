@@ -293,20 +293,20 @@ namespace QuizardApp.ViewModels
 
     public class RecentQuizActivity
     {
-        public string StudentName { get; set; } = string.Empty; = string.Empty;
-        public string QuizTitle { get; set; } = string.Empty; = string.Empty;
-        public string SubjectName { get; set; } = string.Empty; = string.Empty;
+        public string StudentName { get; set; } = string.Empty;
+        public string QuizTitle { get; set; } = string.Empty;
+        public string SubjectName { get; set; } = string.Empty;
         public double Score { get; set; }
-        public string CompletedDate { get; set; } = string.Empty; = string.Empty;
-        public string Grade { get; set; } = string.Empty; = string.Empty;
+        public string CompletedDate { get; set; } = string.Empty;
+        public string Grade { get; set; } = string.Empty;
         public string ScoreDisplay => $"{Score:F1}/10";
     }
 
     public class PopularQuiz
     {
         public int QuizId { get; set; }
-        public string Title { get; set; } = string.Empty; = string.Empty;
-        public string SubjectName { get; set; } = string.Empty; = string.Empty;
+        public string Title { get; set; } = string.Empty;
+        public string SubjectName { get; set; } = string.Empty;
         public int AttemptCount { get; set; }
         public double AverageScore { get; set; }
         public int QuestionCount { get; set; }
@@ -315,7 +315,7 @@ namespace QuizardApp.ViewModels
 
     public class SubjectStatistic
     {
-        public string SubjectName { get; set; } = string.Empty; = string.Empty;
+        public string SubjectName { get; set; } = string.Empty;
         public int QuizCount { get; set; }
         public int AttemptCount { get; set; }
         public double AverageScore { get; set; }

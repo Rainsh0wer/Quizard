@@ -1,5 +1,4 @@
 using System.Windows;
-using QuizardApp.TestData;
 
 namespace QuizardApp
 {
@@ -12,15 +11,7 @@ namespace QuizardApp
         {
             base.OnStartup(e);
             
-            // Create comprehensive data for testing
-            try
-            {
-                ComprehensiveDataCreator.CreateComprehensiveData();
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error creating data: {ex.Message}");
-            }
+            // Initialize application
         }
     }
 

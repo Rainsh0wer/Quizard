@@ -122,7 +122,7 @@ namespace QuizardApp.ViewModels
                         {
                             ClassId = classroom.ClassId,
                             ClassName = classroom.ClassName,
-                            CreatedAt = classroom.CreatedAt,
+                            CreatedAt = classroom.CreatedAt ?? DateTime.MinValue,
                             StudentCount = classroom.Enrollments.Count,
                             Students = classroom.Enrollments.Select(e => e.Student.FullName).ToList()
                         };

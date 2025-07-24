@@ -242,21 +242,21 @@ namespace QuizardApp.ViewModels
 
     public class RecentQuizResult
     {
-        public string QuizTitle { get; set; } = string.Empty; = string.Empty;
-        public string SubjectName { get; set; } = string.Empty; = string.Empty;
+        public string QuizTitle { get; set; } = string.Empty;
+        public string SubjectName { get; set; } = string.Empty;
         public double Score { get; set; }
-        public string CompletedDate { get; set; } = string.Empty; = string.Empty;
-        public string Grade { get; set; } = string.Empty; = string.Empty;
+        public string CompletedDate { get; set; } = string.Empty;
+        public string Grade { get; set; } = string.Empty;
         public string ScoreDisplay => $"{Score:F1}/10";
     }
 
     public class RecommendedQuiz
     {
         public int QuizId { get; set; }
-        public string Title { get; set; } = string.Empty; = string.Empty;
-        public string SubjectName { get; set; } = string.Empty; = string.Empty;
+        public string Title { get; set; } = string.Empty;
+        public string SubjectName { get; set; } = string.Empty;
         public int QuestionCount { get; set; }
-        public string Description { get; set; } = string.Empty; = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public string Summary => $"{QuestionCount} questions";
     }
 }

@@ -80,7 +80,7 @@ namespace QuizardApp.ViewModels
                             SubjectId = subject.SubjectId,
                             Name = subject.Name,
                             Description = subject.Description,
-                            CreatedAt = subject.CreatedAt,
+                            CreatedAt = subject.CreatedAt ?? DateTime.MinValue,
                             QuizCount = subject.Quizzes.Count(q => q.IsPublic == true),
                             TotalQuestions = subject.Quizzes.Where(q => q.IsPublic == true)
                                                           .Sum(q => q.Questions.Count)
