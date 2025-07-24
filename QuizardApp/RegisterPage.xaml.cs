@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,14 +24,7 @@ namespace QuizardApp
         public RegisterPage()
         {
             InitializeComponent();
-
-            var vm = new RegisterViewModel();
-            vm.RequestNavigateToLogin += () =>
-            {
-                this.NavigationService?.Navigate(new LoginPage());
-            };
-
-            this.DataContext = vm;
+            this.DataContext = new RegisterViewModel();
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
