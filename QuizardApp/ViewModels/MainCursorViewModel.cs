@@ -29,7 +29,7 @@ namespace QuizardApp.ViewModels
     {
         private readonly CurrentUserService _currentUserService;
         private AppState _currentState;
-        private BaseViewModel _currentViewModel;
+        private BaseViewModel? _currentViewModel;
         private User? _currentUser;
         private bool _isLoading;
         private string _statusMessage = string.Empty;

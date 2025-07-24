@@ -6,8 +6,8 @@ namespace QuizardApp.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private UserControl _currentView;
-        public UserControl CurrentView
+        private UserControl? _currentView;
+        public UserControl? CurrentView
         {
             get => _currentView;
             set { _currentView = value; OnPropertyChanged(); }
@@ -19,8 +19,8 @@ namespace QuizardApp.ViewModels
             CurrentView = new QuizardApp.Views.LoginView();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string? name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace QuizardApp.Models;
@@ -12,6 +12,8 @@ public partial class QuizAssignment
     public int? ClassId { get; set; }
 
     public int? StudentId { get; set; }
+
+    public int? AssignedTo { get; set; }
 
     public DateTime? DueDate { get; set; }
 

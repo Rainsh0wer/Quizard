@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace QuizardApp.Models;
@@ -12,6 +12,8 @@ public partial class QuestionOption
     public string OptionLabel { get; set; } = null!;
 
     public string Content { get; set; } = null!;
+
+    public string OptionText { get; set; } = null!;
 
     public virtual Question Question { get; set; } = null!;
 }

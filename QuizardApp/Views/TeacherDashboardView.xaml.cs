@@ -8,7 +8,6 @@ namespace QuizardApp.Views
         public TeacherDashboardView()
         {
             InitializeComponent();
-            DataContext = new TeacherDashboardViewModel();
         }
     }
 }
