@@ -150,7 +150,7 @@
 
                         <Button Grid.Column="0" 
                                 Style="{StaticResource ActionButtonStyle}"
-                                Command="{Binding ShowAvailableQuizzesCommand}">
+                                Command="{Binding ShowAvailableQuizzesRelayCommand}">
                             <StackPanel>
                                 <TextBlock Text="📝" FontSize="24" HorizontalAlignment="Center" Margin="0,0,0,5"/>
                                 <TextBlock Text="Take Quiz" HorizontalAlignment="Center"/>
@@ -159,7 +159,7 @@
 
                         <Button Grid.Column="1" 
                                 Style="{StaticResource ActionButtonStyle}"
-                                Command="{Binding ShowSubjectsCommand}">
+                                Command="{Binding ShowSubjectsRelayCommand}">
                             <StackPanel>
                                 <TextBlock Text="📚" FontSize="24" HorizontalAlignment="Center" Margin="0,0,0,5"/>
                                 <TextBlock Text="Browse Subjects" HorizontalAlignment="Center"/>
@@ -168,7 +168,7 @@
 
                         <Button Grid.Column="2" 
                                 Style="{StaticResource ActionButtonStyle}"
-                                Command="{Binding ShowMyResultsCommand}">
+                                Command="{Binding ShowMyResultsRelayCommand}">
                             <StackPanel>
                                 <TextBlock Text="📊" FontSize="24" HorizontalAlignment="Center" Margin="0,0,0,5"/>
                                 <TextBlock Text="View Results" HorizontalAlignment="Center"/>
