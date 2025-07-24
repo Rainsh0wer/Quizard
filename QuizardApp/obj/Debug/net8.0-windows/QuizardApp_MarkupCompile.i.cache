@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\Asus\Downloads\CSDTIME\Quizard\QuizardApp\App.xaml
-31065194844
+15708149981
 
-261710172326
+471457788853
 233-884966637
-LoginPage.xaml;MainWindow.xaml;RegisterPage.xaml;
+LoginPage.xaml;MainWindow.xaml;RegisterPage.xaml;StudentDashboardPage.xaml;TeacherDashboardPage.xaml;Views\AvailableQuizzesView.xaml;Views\ClassroomManagementView.xaml;Views\QuizManagementView.xaml;Views\ResultsView.xaml;Views\SavedQuizzesView.xaml;Views\StudentDashboardView.xaml;Views\StudentResultsView.xaml;Views\StudentSubjectsView.xaml;Views\SubjectManagementView.xaml;Views\TeacherDashboardView.xaml;
 
 False
 

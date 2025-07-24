@@ -62,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Bookmark",
@@ -89,6 +89,30 @@
               "Name": "ST:1:0:{ebe3f1d5-feac-4131-bf03-0e85ffb89a89}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:6:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:7:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "RegisterPage.xaml",
@@ -97,8 +121,7 @@
               "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\RegisterPage.xaml",
               "RelativeToolTip": "RegisterPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-07-14T15:43:42.088Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-14T15:43:42.088Z"
             },
             {
               "$type": "Document",
@@ -122,8 +145,7 @@
               "RelativeToolTip": "RegisterPage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAwwDgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T16:34:40.688Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-14T16:34:40.688Z"
             },
             {
               "$type": "Document",
@@ -135,8 +157,7 @@
               "RelativeToolTip": "MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T16:36:10.979Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-14T16:36:10.979Z"
             },
             {
               "$type": "Document",
@@ -147,8 +168,7 @@
               "ToolTip": "C:\\Users\\Asus\\Downloads\\CSDTIME\\Quizard\\QuizardApp\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-07-14T01:08:54.325Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-14T01:08:54.325Z"
             },
             {
               "$type": "Document",
@@ -160,8 +180,7 @@
               "RelativeToolTip": "LoginPage.xaml.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAcwBgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T06:35:53.605Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-14T06:35:53.605Z"
             },
             {
               "$type": "Document",
@@ -173,8 +192,7 @@
               "RelativeToolTip": "Models\\QuizardContext.cs",
               "ViewState": "AgIAAAEBAAAAAAAAAAAmwBIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T01:21:25.811Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-14T01:21:25.811Z"
             },
             {
               "$type": "Document",
@@ -186,8 +204,7 @@
               "RelativeToolTip": "ViewModels\\LoginViewModel.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T06:38:21.771Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-14T06:38:21.771Z"
             },
             {
               "$type": "Document",
@@ -199,8 +216,7 @@
               "RelativeToolTip": "ViewModels\\RelayCommand.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAUwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T06:39:13.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-14T06:39:13.004Z"
             },
             {
               "$type": "Document",
@@ -212,8 +228,7 @@
               "RelativeToolTip": "ViewModels\\RegisterViewModel.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAUwHUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T16:01:33.674Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-14T16:01:33.674Z"
             },
             {
               "$type": "Document",
@@ -225,8 +240,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-14T01:17:30.187Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-14T01:17:30.187Z"
             },
             {
               "$type": "Document",
@@ -251,6 +265,16 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-14T01:08:53.405Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 120,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         }
