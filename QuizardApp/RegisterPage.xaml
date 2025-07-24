@@ -1,4 +1,4 @@
-﻿<Page x:Class="QuizardApp.RegisterPage"
+<Page x:Class="QuizardApp.RegisterPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -53,6 +53,7 @@
         Command="{Binding GoToLoginCommand}" />
 
                 </StackPanel>
+                <Button Content="Quay lại đăng nhập" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Width="120" Height="30" Command="{Binding GoToLoginCommand}" />
             </StackPanel>
         </Border>
     </Grid>
