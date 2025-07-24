@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -11,15 +12,15 @@ namespace QuizardApp.ViewModels
 {
     public class ClassroomManagementViewModel : BaseViewModel
     {
-        private ObservableCollection<ClassroomInfo> classrooms;
-        private ObservableCollection<User> availableStudents;
-        private ClassroomInfo selectedClassroom;
-        private User selectedStudent;
-        private string message;
-        private string searchText;
+        private ObservableCollection<ClassroomInfo> classrooms = new();
+        private ObservableCollection<User> availableStudents = new();
+        private ClassroomInfo? selectedClassroom;
+        private User? selectedStudent;
+        private string message = string.Empty;
+        private string searchText = string.Empty;
 
         // Classroom Creation Properties
-        private string newClassName;
+        private string newClassName = string.Empty;
 
         public ObservableCollection<ClassroomInfo> Classrooms
         {
@@ -33,8 +34,7 @@ namespace QuizardApp.ViewModels
             set => SetProperty(ref availableStudents, value);
         }
 
-        public ClassroomInfo SelectedClassroom
-        {
+        public ClassroomInfo? SelectedClassroom {
             get => selectedClassroom;
             set 
             {
@@ -44,8 +44,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        public User SelectedStudent
-        {
+        public User? SelectedStudent {
             get => selectedStudent;
             set => SetProperty(ref selectedStudent, value);
         }
@@ -173,7 +172,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteCreateClassroom(object obj)
+        private void ExecuteCreateClassroom(object? obj)
         {
             if (string.IsNullOrWhiteSpace(NewClassName))
             {
@@ -210,7 +209,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteDeleteClassroom(object obj)
+        private void ExecuteDeleteClassroom(object? obj)
         {
             if (SelectedClassroom == null)
             {
@@ -250,7 +249,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteViewClassroomDetails(object obj)
+        private void ExecuteViewClassroomDetails(object? obj)
         {
             if (SelectedClassroom == null)
             {
@@ -269,7 +268,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteAddStudentToClass(object obj)
+        private void ExecuteAddStudentToClass(object? obj)
         {
             if (SelectedClassroom == null)
             {
@@ -308,7 +307,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteRemoveStudentFromClass(object obj)
+        private void ExecuteRemoveStudentFromClass(object? obj)
         {
             if (SelectedClassroom == null)
             {
@@ -327,7 +326,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteAssignQuizToClass(object obj)
+        private void ExecuteAssignQuizToClass(object? obj)
         {
             if (SelectedClassroom == null)
             {
@@ -346,7 +345,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteRefresh(object obj)
+        private void ExecuteRefresh(object? obj)
         {
             LoadClassrooms();
         }
@@ -355,10 +354,10 @@ namespace QuizardApp.ViewModels
     public class ClassroomInfo
     {
         public int ClassId { get; set; }
-        public string ClassName { get; set; }
+        public string ClassName { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
         public int StudentCount { get; set; }
-        public List<string> Students { get; set; }
+        public List<string> Students { get; set; } = new();
         public string FormattedCreatedDate => CreatedAt.ToString("dd/MM/yyyy HH:mm");
         public string StudentSummary => $"{StudentCount} student(s)";
         public string StudentsDisplay => Students != null && Students.Any() 

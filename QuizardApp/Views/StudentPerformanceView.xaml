@@ -1,0 +1,10 @@
+<UserControl x:Class="QuizardApp.Views.StudentPerformanceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <TextBlock Text="Student Performance View" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   FontSize="24"/>
+    </Grid>
+</UserControl>

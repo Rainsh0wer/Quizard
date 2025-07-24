@@ -10,10 +10,10 @@ namespace QuizardApp.ViewModels
 {
     public class StudentResultsViewModel : BaseViewModel
     {
-        private ObservableCollection<StudentQuizResult> results;
-        private StudentQuizResult selectedResult;
-        private string message;
-        private string searchText;
+        private ObservableCollection<StudentQuizResult> results = new();
+        private StudentQuizResult? selectedResult;
+        private string message = string.Empty;
+        private string searchText = string.Empty;
 
         public ObservableCollection<StudentQuizResult> Results
         {
@@ -21,7 +21,7 @@ namespace QuizardApp.ViewModels
             set => SetProperty(ref results, value);
         }
 
-        public StudentQuizResult SelectedResult
+        public StudentQuizResult? SelectedResult
         {
             get => selectedResult;
             set => SetProperty(ref selectedResult, value);
@@ -92,7 +92,7 @@ namespace QuizardApp.ViewModels
                             StartedAt = sq.StartedAt,
                             FinishedAt = sq.FinishedAt,
                             Duration = sq.FinishedAt.HasValue ? 
-                                      (sq.FinishedAt.Value - sq.StartedAt).ToString(@"hh\:mm\:ss") : 
+                                      FormatTimeSpan(sq.FinishedAt.Value - sq.StartedAt) : 
                                       "N/A"
                         };
                         Results.Add(result);
@@ -107,7 +107,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteViewDetail(object obj)
+        private void ExecuteViewDetail(object? obj)
         {
             if (SelectedResult == null)
             {
@@ -126,12 +126,12 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteRefresh(object obj)
+        private void ExecuteRefresh(object? obj)
         {
             LoadResults();
         }
 
-        private void ExecuteRetakeQuiz(object obj)
+        private void ExecuteRetakeQuiz(object? obj)
         {
             if (SelectedResult == null)
             {
@@ -170,18 +170,23 @@ namespace QuizardApp.ViewModels
                 Message = $"Error retaking quiz: {ex.Message}";
             }
         }
+
+        private static string FormatTimeSpan(TimeSpan timeSpan)
+        {
+            return $"{timeSpan.Hours:00}:{timeSpan.Minutes:00}:{timeSpan.Seconds:00}";
+        }
     }
 
     public class StudentQuizResult
     {
         public int StudentQuizId { get; set; }
-        public string QuizTitle { get; set; }
-        public string SubjectName { get; set; }
+        public string QuizTitle { get; set; } = string.Empty; = string.Empty;
+        public string SubjectName { get; set; } = string.Empty; = string.Empty;
         public double Score { get; set; }
         public int TotalQuestions { get; set; }
         public DateTime StartedAt { get; set; }
         public DateTime? FinishedAt { get; set; }
-        public string Duration { get; set; }
+        public string Duration { get; set; } = string.Empty; = string.Empty;
         public string ScorePercentage => $"{Score:F1}/10";
         public string FormattedStartDate => StartedAt.ToString("dd/MM/yyyy HH:mm");
         public string FormattedFinishDate => FinishedAt?.ToString("dd/MM/yyyy HH:mm") ?? "Not completed";

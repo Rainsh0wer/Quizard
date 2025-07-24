@@ -10,16 +10,16 @@ namespace QuizardApp.ViewModels
 {
     public class QuizManagementViewModel : BaseViewModel
     {
-        private ObservableCollection<QuizInfo> quizzes;
-        private ObservableCollection<Subject> subjects;
-        private QuizInfo selectedQuiz;
-        private Subject selectedSubject;
-        private string message;
-        private string searchText;
+        private ObservableCollection<QuizInfo> quizzes = new();
+        private ObservableCollection<Subject> subjects = new();
+        private QuizInfo? selectedQuiz;
+        private Subject? selectedSubject;
+        private string message = string.Empty;
+        private string searchText = string.Empty;
 
         // Quiz Creation Properties
-        private string newQuizTitle;
-        private string newQuizDescription;
+        private string newQuizTitle = string.Empty;
+        private string newQuizDescription = string.Empty;
         private bool newQuizIsPublic = true;
 
         public ObservableCollection<QuizInfo> Quizzes
@@ -34,14 +34,12 @@ namespace QuizardApp.ViewModels
             set => SetProperty(ref subjects, value);
         }
 
-        public QuizInfo SelectedQuiz
-        {
+        public QuizInfo? SelectedQuiz {
             get => selectedQuiz;
             set => SetProperty(ref selectedQuiz, value);
         }
 
-        public Subject SelectedSubject
-        {
+        public Subject? SelectedSubject {
             get => selectedSubject;
             set => SetProperty(ref selectedSubject, value);
         }
@@ -175,7 +173,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteCreateQuiz(object obj)
+        private void ExecuteCreateQuiz(object? obj)
         {
             if (string.IsNullOrWhiteSpace(NewQuizTitle))
             {
@@ -228,7 +226,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteEditQuiz(object obj)
+        private void ExecuteEditQuiz(object? obj)
         {
             if (SelectedQuiz == null)
             {
@@ -247,7 +245,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteDeleteQuiz(object obj)
+        private void ExecuteDeleteQuiz(object? obj)
         {
             if (SelectedQuiz == null)
             {
@@ -301,7 +299,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteViewQuizDetails(object obj)
+        private void ExecuteViewQuizDetails(object? obj)
         {
             if (SelectedQuiz == null)
             {
@@ -320,7 +318,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteAddQuestions(object obj)
+        private void ExecuteAddQuestions(object? obj)
         {
             if (SelectedQuiz == null)
             {
@@ -339,7 +337,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteViewResults(object obj)
+        private void ExecuteViewResults(object? obj)
         {
             if (SelectedQuiz == null)
             {
@@ -358,7 +356,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteRefresh(object obj)
+        private void ExecuteRefresh(object? obj)
         {
             LoadQuizzes();
         }
@@ -367,9 +365,9 @@ namespace QuizardApp.ViewModels
     public class QuizInfo
     {
         public int QuizId { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string SubjectName { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string SubjectName { get; set; } = string.Empty;
         public int QuestionCount { get; set; }
         public int StudentAttempts { get; set; }
         public bool IsPublic { get; set; }

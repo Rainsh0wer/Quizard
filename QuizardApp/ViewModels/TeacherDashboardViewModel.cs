@@ -8,8 +8,8 @@ namespace QuizardApp.ViewModels
 {
     public class TeacherDashboardViewModel : BaseViewModel
     {
-        private string _currentPageTitle;
-        private string _currentPageSubtitle;
+        private string _currentPageTitle = string.Empty;
+        private string _currentPageSubtitle = string.Empty;
         private object _currentView;
 
         public string CurrentUserName => CurrentUserService.Instance.CurrentUser?.FullName ?? "Teacher";

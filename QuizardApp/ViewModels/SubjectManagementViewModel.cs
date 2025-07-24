@@ -10,14 +10,14 @@ namespace QuizardApp.ViewModels
 {
     public class SubjectManagementViewModel : BaseViewModel
     {
-        private ObservableCollection<SubjectDetail> subjects;
-        private SubjectDetail selectedSubject;
-        private string message;
-        private string searchText;
+        private ObservableCollection<SubjectDetail> subjects = new();
+        private SubjectDetail? selectedSubject;
+        private string message = string.Empty;
+        private string searchText = string.Empty;
 
         // Subject Creation Properties
-        private string newSubjectName;
-        private string newSubjectDescription;
+        private string newSubjectName = string.Empty;
+        private string newSubjectDescription = string.Empty;
 
         public ObservableCollection<SubjectDetail> Subjects
         {
@@ -25,8 +25,7 @@ namespace QuizardApp.ViewModels
             set => SetProperty(ref subjects, value);
         }
 
-        public SubjectDetail SelectedSubject
-        {
+        public SubjectDetail? SelectedSubject {
             get => selectedSubject;
             set => SetProperty(ref selectedSubject, value);
         }
@@ -125,7 +124,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteCreateSubject(object obj)
+        private void ExecuteCreateSubject(object? obj)
         {
             if (string.IsNullOrWhiteSpace(NewSubjectName))
             {
@@ -171,7 +170,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteEditSubject(object obj)
+        private void ExecuteEditSubject(object? obj)
         {
             if (SelectedSubject == null)
             {
@@ -190,7 +189,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteDeleteSubject(object obj)
+        private void ExecuteDeleteSubject(object? obj)
         {
             if (SelectedSubject == null)
             {
@@ -225,7 +224,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteViewSubjectQuizzes(object obj)
+        private void ExecuteViewSubjectQuizzes(object? obj)
         {
             if (SelectedSubject == null)
             {
@@ -244,7 +243,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteRefresh(object obj)
+        private void ExecuteRefresh(object? obj)
         {
             LoadSubjects();
         }
@@ -253,8 +252,8 @@ namespace QuizardApp.ViewModels
     public class SubjectDetail
     {
         public int SubjectId { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
         public int TotalQuizzes { get; set; }
         public int PublicQuizzes { get; set; }

@@ -10,12 +10,12 @@ namespace QuizardApp.ViewModels
 {
     public class ResultsViewModel : BaseViewModel
     {
-        private ObservableCollection<QuizResultSummary> quizResults;
-        private ObservableCollection<Quiz> teacherQuizzes;
-        private QuizResultSummary selectedResult;
-        private Quiz selectedQuiz;
-        private string message;
-        private string searchText;
+        private ObservableCollection<QuizResultSummary> quizResults = new();
+        private ObservableCollection<Quiz> teacherQuizzes = new();
+        private QuizResultSummary? selectedResult;
+        private Quiz? selectedQuiz;
+        private string message = string.Empty;
+        private string searchText = string.Empty;
 
         public ObservableCollection<QuizResultSummary> QuizResults
         {
@@ -29,14 +29,12 @@ namespace QuizardApp.ViewModels
             set => SetProperty(ref teacherQuizzes, value);
         }
 
-        public QuizResultSummary SelectedResult
-        {
+        public QuizResultSummary? SelectedResult {
             get => selectedResult;
             set => SetProperty(ref selectedResult, value);
         }
 
-        public Quiz SelectedQuiz
-        {
+        public Quiz? SelectedQuiz {
             get => selectedQuiz;
             set 
             {
@@ -157,7 +155,7 @@ namespace QuizardApp.ViewModels
                             StartedAt = result.StartedAt,
                             FinishedAt = result.FinishedAt,
                             Duration = result.FinishedAt.HasValue ? 
-                                      (result.FinishedAt.Value - result.StartedAt).ToString(@"hh\:mm\:ss") : 
+                                      FormatTimeSpan(result.FinishedAt.Value - result.StartedAt) : 
                                       "N/A"
                         };
                         QuizResults.Add(resultSummary);
@@ -172,7 +170,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteViewDetailedResult(object obj)
+        private void ExecuteViewDetailedResult(object? obj)
         {
             if (SelectedResult == null)
             {
@@ -191,7 +189,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteExportResults(object obj)
+        private void ExecuteExportResults(object? obj)
         {
             if (SelectedQuiz == null)
             {
@@ -210,7 +208,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteViewStudentPerformance(object obj)
+        private void ExecuteViewStudentPerformance(object? obj)
         {
             if (SelectedResult == null)
             {
@@ -229,26 +227,31 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteRefresh(object obj)
+        private void ExecuteRefresh(object? obj)
         {
             LoadTeacherQuizzes();
             LoadQuizResults();
+        }
+
+        private static string FormatTimeSpan(TimeSpan timeSpan)
+        {
+            return $"{timeSpan.Hours:00}:{timeSpan.Minutes:00}:{timeSpan.Seconds:00}";
         }
     }
 
     public class QuizResultSummary
     {
         public int StudentQuizId { get; set; }
-        public string StudentName { get; set; }
-        public string StudentUsername { get; set; }
-        public string QuizTitle { get; set; }
-        public string SubjectName { get; set; }
+        public string StudentName { get; set; } = string.Empty; = string.Empty;
+        public string StudentUsername { get; set; } = string.Empty; = string.Empty;
+        public string QuizTitle { get; set; } = string.Empty; = string.Empty;
+        public string SubjectName { get; set; } = string.Empty; = string.Empty;
         public double Score { get; set; }
         public int CorrectAnswers { get; set; }
         public int TotalQuestions { get; set; }
         public DateTime StartedAt { get; set; }
         public DateTime? FinishedAt { get; set; }
-        public string Duration { get; set; }
+        public string Duration { get; set; } = string.Empty; = string.Empty;
         public string ScoreDisplay => $"{Score:F1}/10";
         public string AccuracyDisplay => TotalQuestions > 0 ? $"{CorrectAnswers}/{TotalQuestions} ({(CorrectAnswers * 100.0 / TotalQuestions):F1}%)" : "N/A";
         public string FormattedStartDate => StartedAt.ToString("dd/MM/yyyy HH:mm");

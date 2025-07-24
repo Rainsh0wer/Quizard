@@ -1,0 +1,10 @@
+<UserControl x:Class="QuizardApp.Views.QuizResultDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <TextBlock Text="Quiz Result Detail View" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   FontSize="24"/>
+    </Grid>
+</UserControl>

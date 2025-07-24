@@ -9,11 +9,11 @@ namespace QuizardApp.ViewModels
     public class RegisterViewModel : BaseViewModel
     {
         // Fields
-        private string _username;
-        private string _email;
-        private string _password;
-        private string _confirmPassword;
-        private string _message;
+        private string _username = string.Empty;
+        private string _email = string.Empty;
+        private string _password = string.Empty;
+        private string _confirmPassword = string.Empty;
+        private string _message = string.Empty;
         
         public ICommand GoToLoginCommand { get; }
 
