@@ -1,4 +1,4 @@
-﻿USE [master]
+USE [master]
 
 /*******************************************************************************
    Drop database if it exists
@@ -346,3 +346,84 @@ INSERT INTO QuizLike (UserID, QuizID) VALUES
 -- 15. SavedQuiz
 INSERT INTO SavedQuiz (StudentID, QuizID) VALUES
 (4,1),(5,2),(6,3),(7,4),(8,5),(9,6),(10,7),(4,8),(5,9),(6,10);
+
+-- Thêm nhiều dữ liệu mẫu vào các bảng
+
+-- Thêm thêm 50 user
+INSERT INTO [User] (Username, Email, PasswordHash, FullName, Role)
+SELECT CONCAT('user', n), CONCAT('user', n, '@mail.com'), 'pass', CONCAT(N'User ', n), CASE WHEN n % 2 = 0 THEN 'student' ELSE 'teacher' END
+FROM (SELECT TOP 50 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 30 AS n FROM sys.objects) AS nums;
+
+-- Thêm thêm 20 subject
+INSERT INTO Subject (Name, Description)
+SELECT CONCAT(N'Subject ', n), CONCAT(N'Description for subject ', n)
+FROM (SELECT TOP 20 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM sys.objects) AS nums;
+
+-- Thêm thêm 100 quiz
+INSERT INTO Quiz (SubjectID, Title, Description, CreatedBy)
+SELECT (ABS(CHECKSUM(NEWID())) % 20) + 1, CONCAT(N'Quiz ', n), CONCAT(N'Description for quiz ', n), (ABS(CHECKSUM(NEWID())) % 50) + 1
+FROM (SELECT TOP 100 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM sys.objects) AS nums;
+
+-- Thêm thêm 300 question
+INSERT INTO Question (QuizID, Content, CorrectOption, Explanation)
+SELECT (ABS(CHECKSUM(NEWID())) % 100) + 1, CONCAT(N'Question ', n, N' content?'), CHAR(65 + (ABS(CHECKSUM(NEWID())) % 4)), CONCAT(N'Explanation for question ', n)
+FROM (SELECT TOP 300 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM sys.objects) AS nums;
+
+-- Thêm thêm 1200 question option (4 option mỗi question)
+INSERT INTO QuestionOption (QuestionID, OptionLabel, Content)
+SELECT q.QuestionID, o.OptionLabel, CONCAT(N'Option ', o.OptionLabel, N' for Question ', q.QuestionID)
+FROM Question q
+CROSS JOIN (SELECT 'A' AS OptionLabel UNION SELECT 'B' UNION SELECT 'C' UNION SELECT 'D') o
+WHERE q.QuestionID > 10;
+
+-- Thêm thêm 200 student quiz
+INSERT INTO StudentQuiz (StudentID, QuizID, Score)
+SELECT (ABS(CHECKSUM(NEWID())) % 25) + 4, (ABS(CHECKSUM(NEWID())) % 100) + 1, (ABS(CHECKSUM(NEWID())) % 10) + 1
+FROM (SELECT TOP 200 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM sys.objects) AS nums;
+
+-- Thêm thêm 800 student answer
+INSERT INTO StudentAnswer (StudentQuizID, QuestionID, SelectedOption, IsCorrect)
+SELECT (ABS(CHECKSUM(NEWID())) % 200) + 1, (ABS(CHECKSUM(NEWID())) % 300) + 1, CHAR(65 + (ABS(CHECKSUM(NEWID())) % 4)), (ABS(CHECKSUM(NEWID())) % 2)
+FROM (SELECT TOP 800 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM sys.objects) AS nums;
+
+-- Thêm thêm 30 classroom
+INSERT INTO Classroom (ClassName, TeacherID)
+SELECT CONCAT(N'Class ', n), (ABS(CHECKSUM(NEWID())) % 25) + 1
+FROM (SELECT TOP 30 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM sys.objects) AS nums;
+
+-- Thêm thêm 100 enrollment
+INSERT INTO Enrollment (ClassID, StudentID)
+SELECT (ABS(CHECKSUM(NEWID())) % 30) + 1, (ABS(CHECKSUM(NEWID())) % 25) + 4
+FROM (SELECT TOP 100 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM sys.objects) AS nums;
+
+-- Thêm thêm 50 quiz assignment
+INSERT INTO QuizAssignment (QuizID, ClassID, DueDate)
+SELECT (ABS(CHECKSUM(NEWID())) % 100) + 1, (ABS(CHECKSUM(NEWID())) % 30) + 1, GETDATE() + (ABS(CHECKSUM(NEWID())) % 30)
+FROM (SELECT TOP 50 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM sys.objects) AS nums;
+
+-- Thêm thêm 20 tag
+INSERT INTO Tag (Name)
+SELECT CONCAT(N'Tag ', n)
+FROM (SELECT TOP 20 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM sys.objects) AS nums;
+
+-- Thêm thêm 200 question tag
+INSERT INTO QuestionTag (QuestionID, TagID)
+SELECT (ABS(CHECKSUM(NEWID())) % 300) + 1, (ABS(CHECKSUM(NEWID())) % 20) + 1
+FROM (SELECT TOP 200 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM sys.objects) AS nums;
+
+-- Thêm thêm 100 feedback
+INSERT INTO Feedback (StudentID, QuizID, Rating, Comment)
+SELECT (ABS(CHECKSUM(NEWID())) % 25) + 4, (ABS(CHECKSUM(NEWID())) % 100) + 1, (ABS(CHECKSUM(NEWID())) % 5) + 1, CONCAT(N'Feedback for quiz ', n)
+FROM (SELECT TOP 100 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM sys.objects) AS nums;
+
+-- Thêm thêm 100 quiz like
+INSERT INTO QuizLike (UserID, QuizID)
+SELECT (ABS(CHECKSUM(NEWID())) % 50) + 1, (ABS(CHECKSUM(NEWID())) % 100) + 1
+FROM (SELECT TOP 100 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM sys.objects) AS nums;
+
+-- Thêm thêm 100 saved quiz
+INSERT INTO SavedQuiz (StudentID, QuizID)
+SELECT (ABS(CHECKSUM(NEWID())) % 25) + 4, (ABS(CHECKSUM(NEWID())) % 100) + 1
+FROM (SELECT TOP 100 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM sys.objects) AS nums;
+
+-- Kết thúc thêm dữ liệu mẫu
