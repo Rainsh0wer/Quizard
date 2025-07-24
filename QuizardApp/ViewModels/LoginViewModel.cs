@@ -58,15 +58,21 @@ namespace QuizardApp.ViewModels
                     if (user != null)
                     {
                         CurrentUserService.Instance.SetCurrentUser(user);
-                        Message = "Login successful!";
+                        Message = $"Login successful! User role: {user.Role}";
                         
                         if (user.Role == "teacher")
                         {
+                            Message = "Navigating to Teacher Dashboard...";
                             AppNavigationService.Instance.Navigate(new TeacherDashboardPage());
                         }
                         else if (user.Role == "student")
                         {
+                            Message = "Navigating to Student Dashboard...";
                             AppNavigationService.Instance.Navigate(new StudentDashboardPage());
+                        }
+                        else
+                        {
+                            Message = $"Unknown role: {user.Role}";
                         }
                     }
                     else
