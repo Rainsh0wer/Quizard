@@ -7,7 +7,7 @@ namespace QuizardApp.Views
         public RemoveStudentView(int classId)
         {
             InitializeComponent();
-            // TODO: Set DataContext with remove student ViewModel
+            DataContext = new ClassroomManagementViewModel();
         }
     }
 }

@@ -7,7 +7,7 @@ namespace QuizardApp.Views
         public QuizzesBySubjectView(int subjectId)
         {
             InitializeComponent();
-            // TODO: Set DataContext with quizzes by subject ViewModel
+            DataContext = new AvailableQuizzesViewModel();
         }
     }
 }

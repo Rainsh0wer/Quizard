@@ -7,7 +7,7 @@ namespace QuizardApp.Views
         public QuizResultsView(int quizId)
         {
             InitializeComponent();
-            // TODO: Set DataContext with quiz results ViewModel
+            DataContext = new ResultsViewModel();
         }
     }
 }

@@ -7,7 +7,7 @@ namespace QuizardApp.Views
         public QuizDetailsView(int quizId)
         {
             InitializeComponent();
-            // TODO: Set DataContext with quiz details ViewModel
+            DataContext = new QuizManagementViewModel();
         }
     }
 }

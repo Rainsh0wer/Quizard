@@ -7,7 +7,7 @@ namespace QuizardApp.Views
         public EditSubjectView(int subjectId)
         {
             InitializeComponent();
-            // TODO: Set DataContext with edit subject ViewModel
+            DataContext = new SubjectManagementViewModel();
         }
     }
 }

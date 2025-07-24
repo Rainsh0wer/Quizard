@@ -7,7 +7,7 @@ namespace QuizardApp.Views
         public AddQuestionsView(int quizId)
         {
             InitializeComponent();
-            // TODO: Set DataContext with add questions ViewModel
+            DataContext = new QuizManagementViewModel();
         }
     }
 }
