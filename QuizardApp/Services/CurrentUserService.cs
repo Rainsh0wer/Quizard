@@ -2,27 +2,16 @@ using QuizardApp.Models;
 
 namespace QuizardApp.Services
 {
-    public class CurrentUserService
+    public static class CurrentUserService
     {
-        private static CurrentUserService _instance;
-        public static CurrentUserService Instance => _instance ??= new CurrentUserService();
-
-        public User CurrentUser { get; private set; }
-
-        public void SetCurrentUser(User user)
+        public static int UserId { get; set; }
+        public static string Username { get; set; }
+        public static string Role { get; set; }
+        public static void Clear()
         {
-            CurrentUser = user;
+            UserId = 0;
+            Username = null;
+            Role = null;
         }
-
-        public void ClearCurrentUser()
-        {
-            CurrentUser = null;
-        }
-
-        public bool IsLoggedIn => CurrentUser != null;
-
-        public bool IsTeacher => CurrentUser?.Role == "teacher";
-
-        public bool IsStudent => CurrentUser?.Role == "student";
     }
 }
