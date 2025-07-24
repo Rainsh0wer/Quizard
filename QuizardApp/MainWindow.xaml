@@ -8,6 +8,5 @@
         Title="Quizard - Quiz Learning Platform" 
         Height="800" Width="1200"
         WindowStartupLocation="CenterScreen"
-        ShowsNavigationUI="False"
-        Source="LoginPage.xaml">
+        ShowsNavigationUI="False">
 </NavigationWindow>

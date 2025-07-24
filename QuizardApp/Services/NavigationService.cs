@@ -20,14 +20,26 @@ namespace QuizardApp.Services
 
         public void Navigate(object page)
         {
-            if (_navigationWindow?.NavigationService != null)
+            try
             {
-                _navigationWindow.NavigationService.Navigate(page);
+                if (_navigationWindow?.NavigationService != null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Navigating to: {page.GetType().Name}");
+                    _navigationWindow.NavigationService.Navigate(page);
+                    System.Diagnostics.Debug.WriteLine("Navigation successful");
+                }
+                else
+                {
+                    string errorMsg = $"Navigation failed: NavigationWindow is {(_navigationWindow == null ? "null" : "not null")}, NavigationService is {(_navigationWindow?.NavigationService == null ? "null" : "not null")}";
+                    System.Diagnostics.Debug.WriteLine(errorMsg);
+                    MessageBox.Show(errorMsg, "Navigation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("Navigation failed: NavigationWindow or NavigationService is null");
-                MessageBox.Show($"Navigation failed: NavigationWindow is {(_navigationWindow == null ? "null" : "not null")}, NavigationService is {(_navigationWindow?.NavigationService == null ? "null" : "not null")}");
+                string errorMsg = $"Navigation exception: {ex.Message}";
+                System.Diagnostics.Debug.WriteLine($"{errorMsg}\nFull exception: {ex}");
+                MessageBox.Show(errorMsg, "Navigation Exception", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

@@ -50,40 +50,70 @@ namespace QuizardApp.ViewModels
 
             try
             {
+                Message = "Connecting to database...";
                 using (var context = new QuizardContext())
                 {
+                    Message = "Searching for user...";
                     var user = context.Users
                                       .FirstOrDefault(u => u.Username == Username && u.PasswordHash == Password && u.IsActive == true);
 
                     if (user != null)
                     {
                         CurrentUserService.Instance.SetCurrentUser(user);
-                        Message = $"Login successful! User role: {user.Role}";
+                        Message = $"Login successful! Welcome {user.FullName}";
                         
                         if (user.Role == "teacher")
                         {
-                            Message = "Navigating to Teacher Dashboard...";
-                            AppNavigationService.Instance.Navigate(new TeacherDashboardPage());
+                            try
+                            {
+                                var teacherPage = new TeacherDashboardPage();
+                                AppNavigationService.Instance.Navigate(teacherPage);
+                            }
+                            catch (Exception navEx)
+                            {
+                                Message = $"Navigation error: {navEx.Message}";
+                                System.Diagnostics.Debug.WriteLine($"Teacher dashboard navigation failed: {navEx}");
+                            }
                         }
                         else if (user.Role == "student")
                         {
-                            Message = "Navigating to Student Dashboard...";
-                            AppNavigationService.Instance.Navigate(new StudentDashboardPage());
+                            try
+                            {
+                                var studentPage = new StudentDashboardPage();
+                                AppNavigationService.Instance.Navigate(studentPage);
+                            }
+                            catch (Exception navEx)
+                            {
+                                Message = $"Navigation error: {navEx.Message}";
+                                System.Diagnostics.Debug.WriteLine($"Student dashboard navigation failed: {navEx}");
+                            }
                         }
                         else
                         {
-                            Message = $"Unknown role: {user.Role}";
+                            Message = $"Unknown role: '{user.Role}' (Length: {user.Role?.Length})";
                         }
                     }
                     else
                     {
                         Message = "Invalid username or password, or account is inactive.";
+                        
+                        // Debug: Check if user exists with different credentials
+                        var userExists = context.Users.FirstOrDefault(u => u.Username == Username);
+                        if (userExists != null)
+                        {
+                            Message += $" User exists but password/status mismatch. IsActive: {userExists.IsActive}";
+                        }
+                        else
+                        {
+                            Message += " User not found.";
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
                 Message = $"Login error: {ex.Message}";
+                System.Diagnostics.Debug.WriteLine($"Full exception: {ex}");
             }
         }
 

@@ -12,6 +12,12 @@ namespace QuizardApp
         {
             InitializeComponent();
             AppNavigationService.Instance.Initialize(this);
+            
+            // Navigate to LoginPage as initial page
+            this.Loaded += (s, e) => 
+            {
+                AppNavigationService.Instance.Navigate(new LoginPage());
+            };
         }
     }
 }
