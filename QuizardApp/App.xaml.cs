@@ -12,8 +12,15 @@ namespace QuizardApp
         {
             base.OnStartup(e);
             
-            // Uncomment the line below to create sample data for testing
-            // SampleDataCreator.CreateSampleData();
+            // Create comprehensive data for testing
+            try
+            {
+                ComprehensiveDataCreator.CreateComprehensiveData();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error creating data: {ex.Message}");
+            }
         }
     }
 
