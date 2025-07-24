@@ -7,7 +7,7 @@ namespace QuizardApp.Views
         public StudentPerformanceView(string studentUsername)
         {
             InitializeComponent();
-            // TODO: Set DataContext with student performance ViewModel
+            DataContext = new ResultsViewModel();
         }
     }
 }
