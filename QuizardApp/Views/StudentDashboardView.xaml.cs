@@ -8,7 +8,7 @@ namespace QuizardApp.Views
         public StudentDashboardView()
         {
             InitializeComponent();
-            DataContext = new StudentDashboardViewViewModel();
+            // DataContext = new StudentDashboardViewViewModel(); // Xóa dòng này để nhận DataContext từ cha
         }
     }
 }
