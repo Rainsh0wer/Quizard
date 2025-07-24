@@ -1,18 +1,19 @@
 using System;
-using System.Windows.Controls;
 
 namespace QuizardApp.Services
 {
     public class NavigationService
     {
-        private readonly Action<UserControl> _navigate;
-        public NavigationService(Action<UserControl> navigate)
+        private readonly Action<object> _setContent;
+        
+        public NavigationService(Action<object> setContent)
         {
-            _navigate = navigate;
+            _setContent = setContent;
         }
-        public void Navigate(UserControl view)
+        
+        public void SetContent(object content)
         {
-            _navigate(view);
+            _setContent(content);
         }
     }
 }

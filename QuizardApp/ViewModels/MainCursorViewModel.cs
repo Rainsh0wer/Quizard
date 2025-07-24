@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -26,7 +27,6 @@ namespace QuizardApp.ViewModels
 
     public class MainCursorViewModel : INotifyPropertyChanged
     {
-        private readonly NavigationService _navigationService;
         private readonly CurrentUserService _currentUserService;
         private AppState _currentState;
         private BaseViewModel _currentViewModel;
@@ -34,9 +34,8 @@ namespace QuizardApp.ViewModels
         private bool _isLoading;
         private string _statusMessage = string.Empty;
 
-        public MainCursorViewModel(NavigationService navigationService, CurrentUserService currentUserService)
+        public MainCursorViewModel(CurrentUserService currentUserService)
         {
-            _navigationService = navigationService;
             _currentUserService = currentUserService;
             _currentState = AppState.Login;
             

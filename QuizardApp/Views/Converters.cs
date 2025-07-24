@@ -3,7 +3,9 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 using QuizardApp.ViewModels;
+using QuizardApp.Models;
 
 namespace QuizardApp.Views
 {
@@ -33,6 +35,43 @@ namespace QuizardApp.Views
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return string.IsNullOrWhiteSpace(value?.ToString()) ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class CommandToVisibilityConverter : IValueConverter
+    {
+        public static readonly CommandToVisibilityConverter Instance = new();
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is ICommand command)
+                return command.CanExecute(null) ? Visibility.Visible : Visibility.Collapsed;
+            return Visibility.Collapsed;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class UserToWelcomeMessageConverter : IValueConverter
+    {
+        public static readonly UserToWelcomeMessageConverter Instance = new();
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is User user)
+            {
+                var name = user.FullName ?? user.Username ?? "User";
+                return $"Welcome, {name}!";
+            }
+            return "Welcome!";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
