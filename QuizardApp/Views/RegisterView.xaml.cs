@@ -8,7 +8,6 @@ namespace QuizardApp.Views
         public RegisterView()
         {
             InitializeComponent();
-            DataContext = new RegisterViewModel();
         }
     }
 }

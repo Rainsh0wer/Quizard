@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace QuizardApp.Models;
@@ -8,6 +8,8 @@ public partial class StudentAnswer
     public int AnswerId { get; set; }
 
     public int StudentQuizId { get; set; }
+
+    public int StudentId { get; set; }
 
     public int QuestionId { get; set; }
 

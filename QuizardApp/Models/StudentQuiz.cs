@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace QuizardApp.Models;
@@ -14,6 +14,10 @@ public partial class StudentQuiz
     public DateTime? StartedAt { get; set; }
 
     public DateTime? FinishedAt { get; set; }
+
+    public DateTime? CompletedAt { get; set; }
+
+    public TimeSpan? TimeSpent { get; set; }
 
     public double? Score { get; set; }
 
