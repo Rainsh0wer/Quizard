@@ -1,56 +1,18 @@
 using System;
-using System.Windows;
-using System.Windows.Navigation;
+using System.Windows.Controls;
 
 namespace QuizardApp.Services
 {
-
-    public class AppNavigationService
+    public class NavigationService
     {
-        private static AppNavigationService _instance;
-        public static AppNavigationService Instance => _instance ??= new AppNavigationService();
-
-
-        private NavigationWindow _navigationWindow;
-
-        public void Initialize(NavigationWindow navigationWindow)
+        private readonly Action<UserControl> _navigate;
+        public NavigationService(Action<UserControl> navigate)
         {
-            _navigationWindow = navigationWindow;
+            _navigate = navigate;
         }
-
-        public void Navigate(object page)
+        public void Navigate(UserControl view)
         {
-            try
-            {
-                if (_navigationWindow?.NavigationService != null)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Navigating to: {page.GetType().Name}");
-                    _navigationWindow.NavigationService.Navigate(page);
-                    System.Diagnostics.Debug.WriteLine("Navigation successful");
-                }
-                else
-                {
-                    string errorMsg = $"Navigation failed: NavigationWindow is {(_navigationWindow == null ? "null" : "not null")}, NavigationService is {(_navigationWindow?.NavigationService == null ? "null" : "not null")}";
-                    System.Diagnostics.Debug.WriteLine(errorMsg);
-                    MessageBox.Show(errorMsg, "Navigation Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                string errorMsg = $"Navigation exception: {ex.Message}";
-                System.Diagnostics.Debug.WriteLine($"{errorMsg}\nFull exception: {ex}");
-                MessageBox.Show(errorMsg, "Navigation Exception", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            _navigate(view);
         }
-
-        public void GoBack()
-        {
-            if (_navigationWindow?.NavigationService?.CanGoBack == true)
-            {
-                _navigationWindow.NavigationService.GoBack();
-            }
-        }
-
-        public bool CanGoBack => _navigationWindow?.NavigationService?.CanGoBack ?? false;
     }
 }

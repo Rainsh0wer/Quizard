@@ -3,12 +3,12 @@ using QuizardApp.ViewModels;
 
 namespace QuizardApp.Views
 {
-    public partial class AvailableQuizzesView : UserControl
+    public partial class LoginView : UserControl
     {
-        public AvailableQuizzesView()
+        public LoginView()
         {
             InitializeComponent();
-            DataContext = new AvailableQuizzesViewModel();
+            DataContext = new LoginViewModel();
         }
     }
 }

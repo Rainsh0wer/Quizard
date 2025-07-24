@@ -1,123 +1,62 @@
-using System;
-using System.Linq;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using QuizardApp.Models;
-using QuizardApp.Services;
 
 namespace QuizardApp.ViewModels
 {
-    public class RegisterViewModel : BaseViewModel
+    public class RegisterViewModel : INotifyPropertyChanged
     {
-        // Fields
-        private string _username = string.Empty;
-        private string _email = string.Empty;
-        private string _password = string.Empty;
-        private string _confirmPassword = string.Empty;
-        private string _message = string.Empty;
-        
-        public ICommand GoToLoginCommand { get; }
-
-        // Properties
+        private string _username;
         public string Username
         {
             get => _username;
-            set => SetProperty(ref _username, value);
+            set { _username = value; OnPropertyChanged(); }
         }
 
-        public string Email
-        {
-            get => _email;
-            set => SetProperty(ref _email, value);
-        }
-
+        private string _password;
         public string Password
         {
             get => _password;
-            set => SetProperty(ref _password, value);
+            set { _password = value; OnPropertyChanged(); }
         }
 
+        private string _confirmPassword;
         public string ConfirmPassword
         {
             get => _confirmPassword;
-            set => SetProperty(ref _confirmPassword, value);
+            set { _confirmPassword = value; OnPropertyChanged(); }
         }
 
-        public string Message
+        private string _email;
+        public string Email
         {
-            get => _message;
-            set => SetProperty(ref _message, value);
+            get => _email;
+            set { _email = value; OnPropertyChanged(); }
         }
 
-        // Command
         public ICommand RegisterCommand { get; }
+        public ICommand BackCommand { get; }
 
-        // Constructor
         public RegisterViewModel()
         {
             RegisterCommand = new RelayCommand(Register);
-            GoToLoginCommand = new RelayCommand(_ => GoToLogin());
+            BackCommand = new RelayCommand(Back);
         }
 
-        private void GoToLogin()
+        private void Register(object obj)
         {
-            AppNavigationService.Instance.Navigate(new LoginPage());
+            // TODO: Xử lý đăng ký
         }
 
-        // Register Logic
-        private void Register(object? parameter)
+        private void Back(object obj)
         {
-            if (Password != ConfirmPassword)
-            {
-                Message = "Passwords do not match.";
-                return;
-            }
+            // TODO: Quay lại màn hình đăng nhập
+        }
 
-            try
-            {
-                using (var context = new QuizardContext())
-                {
-                    // Check if username or email already exists
-                    var existingUser = context.Users
-                        .FirstOrDefault(u => u.Username == Username || u.Email == Email);
-                    if (existingUser != null)
-                    {
-                        Message = "Username or email already exists.";
-                        return;
-                    }
-
-                    // Hash password (simple hash, replace with stronger one if needed)
-                    string passwordHash = Password;
-
-                    var newUser = new User
-                    {
-                        Username = Username,
-                        Email = Email,
-                        PasswordHash = passwordHash,
-                        Role = "Student", // or "Teacher"
-                        FullName = "",
-                        CreatedAt = DateTime.Now,
-                        IsActive = true
-                    };
-
-                    context.Users.Add(newUser);
-                    context.SaveChanges();
-
-                    Message = "Registration successful! Redirecting to login...";
-                    
-                    // Navigate to login page after successful registration
-                    System.Threading.Tasks.Task.Delay(1500).ContinueWith(_ => 
-                    {
-                        System.Windows.Application.Current.Dispatcher.Invoke(() => 
-                        {
-                            GoToLogin();
-                        });
-                    });
-                }
-            }
-            catch (Exception ex)
-            {
-                Message = "Registration failed: " + ex.Message;
-            }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
