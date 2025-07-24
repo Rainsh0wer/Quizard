@@ -94,7 +94,7 @@ namespace QuizardApp.ViewModels
             if (result == MessageBoxResult.Yes)
             {
                 CurrentUserService.Instance.ClearCurrentUser();
-                NavigationService.Instance.Navigate(new LoginPage());
+                AppNavigationService.Instance.Navigate(new LoginPage());
             }
         }
     }

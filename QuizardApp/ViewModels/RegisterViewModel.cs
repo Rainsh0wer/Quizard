@@ -1,12 +1,12 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System;
+using System.Linq;
 using System.Windows.Input;
 using QuizardApp.Models;
+using QuizardApp.Services;
 
 namespace QuizardApp.ViewModels
 {
-    public class RegisterViewModel : INotifyPropertyChanged
+    public class RegisterViewModel : BaseViewModel
     {
         // Fields
         private string _username;
@@ -14,39 +14,38 @@ namespace QuizardApp.ViewModels
         private string _password;
         private string _confirmPassword;
         private string _message;
-        public event Action RequestNavigateToLogin;
+        
         public ICommand GoToLoginCommand { get; }
-
 
         // Properties
         public string Username
         {
             get => _username;
-            set { _username = value; OnPropertyChanged(); }
+            set => SetProperty(ref _username, value);
         }
 
         public string Email
         {
             get => _email;
-            set { _email = value; OnPropertyChanged(); }
+            set => SetProperty(ref _email, value);
         }
 
         public string Password
         {
             get => _password;
-            set { _password = value; OnPropertyChanged(); }
+            set => SetProperty(ref _password, value);
         }
 
         public string ConfirmPassword
         {
             get => _confirmPassword;
-            set { _confirmPassword = value; OnPropertyChanged(); }
+            set => SetProperty(ref _confirmPassword, value);
         }
 
         public string Message
         {
             get => _message;
-            set { _message = value; OnPropertyChanged(); }
+            set => SetProperty(ref _message, value);
         }
 
         // Command
@@ -56,7 +55,12 @@ namespace QuizardApp.ViewModels
         public RegisterViewModel()
         {
             RegisterCommand = new RelayCommand(Register);
-            GoToLoginCommand = new RelayCommand(_ => RequestNavigateToLogin?.Invoke());
+            GoToLoginCommand = new RelayCommand(_ => GoToLogin());
+        }
+
+        private void GoToLogin()
+        {
+            AppNavigationService.Instance.Navigate(new LoginPage());
         }
 
         // Register Logic
@@ -98,20 +102,22 @@ namespace QuizardApp.ViewModels
                     context.Users.Add(newUser);
                     context.SaveChanges();
 
-                    Message = "Registration successful!";
+                    Message = "Registration successful! Redirecting to login...";
+                    
+                    // Navigate to login page after successful registration
+                    System.Threading.Tasks.Task.Delay(1500).ContinueWith(_ => 
+                    {
+                        System.Windows.Application.Current.Dispatcher.Invoke(() => 
+                        {
+                            GoToLogin();
+                        });
+                    });
                 }
             }
             catch (Exception ex)
             {
                 Message = "Registration failed: " + ex.Message;
             }
-        }
-
-        // INotifyPropertyChanged Implementation
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

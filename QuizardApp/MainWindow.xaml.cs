@@ -11,7 +11,7 @@ namespace QuizardApp
         public MainWindow()
         {
             InitializeComponent();
-            NavigationService.Instance.Initialize(this);
+            AppNavigationService.Instance.Initialize(this);
         }
     }
 }

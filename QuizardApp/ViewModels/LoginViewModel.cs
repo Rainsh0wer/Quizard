@@ -61,11 +61,11 @@ namespace QuizardApp.ViewModels
                         
                         if (user.Role == "teacher")
                         {
-                            NavigationService.Instance.Navigate(new TeacherDashboardPage());
+                            AppNavigationService.Instance.Navigate(new TeacherDashboardPage());
                         }
                         else if (user.Role == "student")
                         {
-                            NavigationService.Instance.Navigate(new StudentDashboardPage());
+                            AppNavigationService.Instance.Navigate(new StudentDashboardPage());
                         }
                     }
                     else
@@ -82,7 +82,7 @@ namespace QuizardApp.ViewModels
 
         private void ExecuteSignUp(object obj)
         {
-            NavigationService.Instance.Navigate(new RegisterPage());
+            AppNavigationService.Instance.Navigate(new RegisterPage());
         }
     }
 }
