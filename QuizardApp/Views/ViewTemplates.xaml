@@ -1,7 +1,8 @@
 <ResourceDictionary x:Class="QuizardApp.Views.ViewTemplates"
                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:vm="clr-namespace:QuizardApp.ViewModels">
+                    xmlns:vm="clr-namespace:QuizardApp.ViewModels"
+                    xmlns:local="clr-namespace:QuizardApp.Views">
 
     <!-- Login View Template -->
     <DataTemplate x:Key="LoginViewTemplate" DataType="{x:Type vm:LoginViewModel}">
@@ -57,7 +58,7 @@
                                TextWrapping="Wrap"
                                HorizontalAlignment="Center"
                                Margin="0,0,0,15"
-                               Visibility="{Binding ErrorMessage, Converter={x:Static vm:StringToVisibilityConverter.Instance}}"/>
+                               Visibility="{Binding ErrorMessage, Converter={x:Static local:StringToVisibilityConverter.Instance}}"/>
 
                     <Separator Margin="0,15"/>
 
