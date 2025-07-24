@@ -56,7 +56,12 @@ namespace QuizardApp.ViewModels
         {
             CurrentPageTitle = "Dashboard";
             CurrentPageSubtitle = "Overview of your teaching activities";
-            CurrentView = new TeacherDashboardView();
+            CurrentView = new TeacherDashboardView(
+                ShowQuizzesCommand,
+                ShowSubjectsCommand,
+                ShowResultsCommand,
+                ShowClassroomsCommand
+            );
         }
 
         private void ShowSubjects()

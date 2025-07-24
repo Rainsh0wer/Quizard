@@ -150,7 +150,7 @@
 
                         <Button Grid.Column="0" 
                                 Style="{StaticResource QuickActionButtonStyle}"
-                                Command="{Binding CreateQuizCommand}">
+                                Command="{Binding ShowQuizzesCommand}">
                             <StackPanel>
                                 <TextBlock Text="📝" FontSize="24" HorizontalAlignment="Center" Margin="0,0,0,5"/>
                                 <TextBlock Text="Create Quiz" HorizontalAlignment="Center"/>
@@ -159,7 +159,7 @@
 
                         <Button Grid.Column="1" 
                                 Style="{StaticResource QuickActionButtonStyle}"
-                                Command="{Binding CreateClassroomCommand}">
+                                Command="{Binding ShowClassroomsCommand}">
                             <StackPanel>
                                 <TextBlock Text="🏫" FontSize="24" HorizontalAlignment="Center" Margin="0,0,0,5"/>
                                 <TextBlock Text="Create Classroom" HorizontalAlignment="Center"/>
@@ -168,7 +168,7 @@
 
                         <Button Grid.Column="2" 
                                 Style="{StaticResource QuickActionButtonStyle}"
-                                Command="{Binding ViewResultsCommand}">
+                                Command="{Binding ShowResultsCommand}">
                             <StackPanel>
                                 <TextBlock Text="📊" FontSize="24" HorizontalAlignment="Center" Margin="0,0,0,5"/>
                                 <TextBlock Text="View Results" HorizontalAlignment="Center"/>
