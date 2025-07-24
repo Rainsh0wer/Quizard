@@ -10,10 +10,10 @@ namespace QuizardApp.ViewModels
 {
     public class SavedQuizzesViewModel : BaseViewModel
     {
-        private ObservableCollection<SavedQuizInfo> savedQuizzes;
-        private SavedQuizInfo selectedQuiz;
-        private string message;
-        private string searchText;
+        private ObservableCollection<SavedQuizInfo> savedQuizzes = new();
+        private SavedQuizInfo? selectedQuiz;
+        private string message = string.Empty;
+        private string searchText = string.Empty;
 
         public ObservableCollection<SavedQuizInfo> SavedQuizzes
         {
@@ -21,8 +21,7 @@ namespace QuizardApp.ViewModels
             set => SetProperty(ref savedQuizzes, value);
         }
 
-        public SavedQuizInfo SelectedQuiz
-        {
+        public SavedQuizInfo? SelectedQuiz {
             get => selectedQuiz;
             set => SetProperty(ref selectedQuiz, value);
         }
@@ -111,7 +110,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteTakeQuiz(object obj)
+        private void ExecuteTakeQuiz(object? obj)
         {
             if (SelectedQuiz == null)
             {
@@ -159,7 +158,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteRemoveFromSaved(object obj)
+        private void ExecuteRemoveFromSaved(object? obj)
         {
             if (SelectedQuiz == null)
             {
@@ -188,7 +187,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteViewQuizDetails(object obj)
+        private void ExecuteViewQuizDetails(object? obj)
         {
             if (SelectedQuiz == null)
             {
@@ -207,7 +206,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteRefresh(object obj)
+        private void ExecuteRefresh(object? obj)
         {
             LoadSavedQuizzes();
         }
@@ -217,10 +216,10 @@ namespace QuizardApp.ViewModels
     {
         public int SavedId { get; set; }
         public int QuizId { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string SubjectName { get; set; }
-        public string CreatedBy { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string SubjectName { get; set; } = string.Empty;
+        public string CreatedBy { get; set; } = string.Empty;
         public int QuestionCount { get; set; }
         public DateTime SavedAt { get; set; }
         public bool IsPublic { get; set; }

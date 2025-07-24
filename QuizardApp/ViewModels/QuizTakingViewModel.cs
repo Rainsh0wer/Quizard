@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -6,19 +7,18 @@ using QuizardApp.Models;
 using QuizardApp.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Windows.Threading;
-using System.Collections.Generic;
 
 namespace QuizardApp.ViewModels
 {
     public class QuizTakingViewModel : BaseViewModel
     {
         private int studentQuizId;
-        private ObservableCollection<QuestionViewModel> questions;
+        private ObservableCollection<QuestionViewModel> questions = new();
         private QuestionViewModel currentQuestion;
         private int currentQuestionIndex;
-        private string message;
-        private string quizTitle;
-        private string timeRemaining;
+        private string message = string.Empty;
+        private string quizTitle = string.Empty;
+        private string timeRemaining = string.Empty;
         private DispatcherTimer timer;
         private DateTime startTime;
         private bool isQuizCompleted;
@@ -147,13 +147,13 @@ namespace QuizardApp.ViewModels
             timer.Start();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object? sender, EventArgs e)
         {
             var elapsed = DateTime.Now - startTime;
-            TimeRemaining = $"Time: {elapsed:hh\\:mm\\:ss}";
+            TimeRemaining = $"Time: {elapsed.Hours:00}:{elapsed.Minutes:00}:{elapsed.Seconds:00}";
         }
 
-        private void ExecuteNextQuestion(object obj)
+        private void ExecuteNextQuestion(object? obj)
         {
             if (CurrentQuestionIndex < Questions.Count - 1)
             {
@@ -162,7 +162,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecutePreviousQuestion(object obj)
+        private void ExecutePreviousQuestion(object? obj)
         {
             if (CurrentQuestionIndex > 0)
             {
@@ -171,7 +171,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteSelectAnswer(object obj)
+        private void ExecuteSelectAnswer(object? obj)
         {
             if (obj is string selectedOption && CurrentQuestion != null)
             {
@@ -191,7 +191,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteSubmitQuiz(object obj)
+        private void ExecuteSubmitQuiz(object? obj)
         {
             try
             {
@@ -261,16 +261,16 @@ namespace QuizardApp.ViewModels
     public class QuestionViewModel
     {
         public int QuestionId { get; set; }
-        public string Content { get; set; }
+        public string Content { get; set; } = string.Empty;
         public List<OptionViewModel> Options { get; set; }
-        public string SelectedAnswer { get; set; }
+        public string? SelectedAnswer { get; set; }
     }
 
     public class OptionViewModel
     {
         public int OptionId { get; set; }
-        public string Label { get; set; }
-        public string Content { get; set; }
+        public string Label { get; set; } = string.Empty;
+        public string Content { get; set; } = string.Empty;
         public bool IsSelected { get; set; }
     }
 }

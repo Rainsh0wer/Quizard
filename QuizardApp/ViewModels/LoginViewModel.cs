@@ -9,9 +9,9 @@ namespace QuizardApp.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private string username;
-        private string password;
-        private string message;
+        private string username = string.Empty;
+        private string password = string.Empty;
+        private string message = string.Empty;
 
         public string Username
         {
@@ -40,7 +40,7 @@ namespace QuizardApp.ViewModels
             SignUpCommand = new RelayCommand(ExecuteSignUp);
         }
 
-        private void ExecuteLogin(object obj)
+        private void ExecuteLogin(object? obj)
         {
             if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
             {
@@ -117,7 +117,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteSignUp(object obj)
+        private void ExecuteSignUp(object? obj)
         {
             AppNavigationService.Instance.Navigate(new RegisterPage());
         }

@@ -15,9 +15,9 @@ namespace QuizardApp.ViewModels
         private int totalQuizzesPassed;
         private double averageScore;
         private int savedQuizzesCount;
-        private string message;
-        private ObservableCollection<RecentQuizResult> recentResults;
-        private ObservableCollection<RecommendedQuiz> recommendedQuizzes;
+        private string message = string.Empty;
+        private ObservableCollection<RecentQuizResult> recentResults = new();
+        private ObservableCollection<RecommendedQuiz> recommendedQuizzes = new();
 
         public int TotalQuizzesAvailable
         {
@@ -193,17 +193,17 @@ namespace QuizardApp.ViewModels
             return "Fail";
         }
 
-        private void ExecuteViewAllQuizzes(object obj)
+        private void ExecuteViewAllQuizzes(object? obj)
         {
             // Navigate to available quizzes - will be handled by parent dashboard
         }
 
-        private void ExecuteViewAllResults(object obj)
+        private void ExecuteViewAllResults(object? obj)
         {
             // Navigate to results - will be handled by parent dashboard
         }
 
-        private void ExecuteTakeQuiz(object obj)
+        private void ExecuteTakeQuiz(object? obj)
         {
             if (obj is RecommendedQuiz quiz)
             {
@@ -234,7 +234,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteRefresh(object obj)
+        private void ExecuteRefresh(object? obj)
         {
             LoadDashboardData();
         }
@@ -242,21 +242,21 @@ namespace QuizardApp.ViewModels
 
     public class RecentQuizResult
     {
-        public string QuizTitle { get; set; }
-        public string SubjectName { get; set; }
+        public string QuizTitle { get; set; } = string.Empty; = string.Empty;
+        public string SubjectName { get; set; } = string.Empty; = string.Empty;
         public double Score { get; set; }
-        public string CompletedDate { get; set; }
-        public string Grade { get; set; }
+        public string CompletedDate { get; set; } = string.Empty; = string.Empty;
+        public string Grade { get; set; } = string.Empty; = string.Empty;
         public string ScoreDisplay => $"{Score:F1}/10";
     }
 
     public class RecommendedQuiz
     {
         public int QuizId { get; set; }
-        public string Title { get; set; }
-        public string SubjectName { get; set; }
+        public string Title { get; set; } = string.Empty; = string.Empty;
+        public string SubjectName { get; set; } = string.Empty; = string.Empty;
         public int QuestionCount { get; set; }
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty; = string.Empty;
         public string Summary => $"{QuestionCount} questions";
     }
 }

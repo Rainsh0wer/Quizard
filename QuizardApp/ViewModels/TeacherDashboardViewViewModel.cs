@@ -16,10 +16,10 @@ namespace QuizardApp.ViewModels
         private int totalClassrooms;
         private int totalStudentsEnrolled;
         private double averageQuizScore;
-        private string message;
-        private ObservableCollection<RecentQuizActivity> recentActivities;
-        private ObservableCollection<PopularQuiz> popularQuizzes;
-        private ObservableCollection<SubjectStatistic> subjectStats;
+        private string message = string.Empty;
+        private ObservableCollection<RecentQuizActivity> recentActivities = new();
+        private ObservableCollection<PopularQuiz> popularQuizzes = new();
+        private ObservableCollection<SubjectStatistic> subjectStats = new();
 
         public int TotalQuizzesCreated
         {
@@ -254,22 +254,22 @@ namespace QuizardApp.ViewModels
             return "Fail";
         }
 
-        private void ExecuteCreateQuiz(object obj)
+        private void ExecuteCreateQuiz(object? obj)
         {
             // Navigate to quiz management - will be handled by parent dashboard
         }
 
-        private void ExecuteViewAllResults(object obj)
+        private void ExecuteViewAllResults(object? obj)
         {
             // Navigate to results - will be handled by parent dashboard
         }
 
-        private void ExecuteManageClassrooms(object obj)
+        private void ExecuteManageClassrooms(object? obj)
         {
             // Navigate to classroom management - will be handled by parent dashboard
         }
 
-        private void ExecuteViewQuizDetails(object obj)
+        private void ExecuteViewQuizDetails(object? obj)
         {
             if (obj is PopularQuiz quiz)
             {
@@ -285,7 +285,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteRefresh(object obj)
+        private void ExecuteRefresh(object? obj)
         {
             LoadDashboardData();
         }
@@ -293,20 +293,20 @@ namespace QuizardApp.ViewModels
 
     public class RecentQuizActivity
     {
-        public string StudentName { get; set; }
-        public string QuizTitle { get; set; }
-        public string SubjectName { get; set; }
+        public string StudentName { get; set; } = string.Empty; = string.Empty;
+        public string QuizTitle { get; set; } = string.Empty; = string.Empty;
+        public string SubjectName { get; set; } = string.Empty; = string.Empty;
         public double Score { get; set; }
-        public string CompletedDate { get; set; }
-        public string Grade { get; set; }
+        public string CompletedDate { get; set; } = string.Empty; = string.Empty;
+        public string Grade { get; set; } = string.Empty; = string.Empty;
         public string ScoreDisplay => $"{Score:F1}/10";
     }
 
     public class PopularQuiz
     {
         public int QuizId { get; set; }
-        public string Title { get; set; }
-        public string SubjectName { get; set; }
+        public string Title { get; set; } = string.Empty; = string.Empty;
+        public string SubjectName { get; set; } = string.Empty; = string.Empty;
         public int AttemptCount { get; set; }
         public double AverageScore { get; set; }
         public int QuestionCount { get; set; }
@@ -315,7 +315,7 @@ namespace QuizardApp.ViewModels
 
     public class SubjectStatistic
     {
-        public string SubjectName { get; set; }
+        public string SubjectName { get; set; } = string.Empty; = string.Empty;
         public int QuizCount { get; set; }
         public int AttemptCount { get; set; }
         public double AverageScore { get; set; }

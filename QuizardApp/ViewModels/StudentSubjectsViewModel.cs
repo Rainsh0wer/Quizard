@@ -10,10 +10,10 @@ namespace QuizardApp.ViewModels
 {
     public class StudentSubjectsViewModel : BaseViewModel
     {
-        private ObservableCollection<SubjectInfo> subjects;
-        private SubjectInfo selectedSubject;
-        private string message;
-        private string searchText;
+        private ObservableCollection<SubjectInfo> subjects = new();
+        private SubjectInfo? selectedSubject;
+        private string message = string.Empty;
+        private string searchText = string.Empty;
 
         public ObservableCollection<SubjectInfo> Subjects
         {
@@ -21,8 +21,7 @@ namespace QuizardApp.ViewModels
             set => SetProperty(ref subjects, value);
         }
 
-        public SubjectInfo SelectedSubject
-        {
+        public SubjectInfo? SelectedSubject {
             get => selectedSubject;
             set => SetProperty(ref selectedSubject, value);
         }
@@ -98,7 +97,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteViewQuizzes(object obj)
+        private void ExecuteViewQuizzes(object? obj)
         {
             if (SelectedSubject == null)
             {
@@ -117,7 +116,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteRefresh(object obj)
+        private void ExecuteRefresh(object? obj)
         {
             LoadSubjects();
         }
@@ -126,8 +125,8 @@ namespace QuizardApp.ViewModels
     public class SubjectInfo
     {
         public int SubjectId { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
         public int QuizCount { get; set; }
         public int TotalQuestions { get; set; }

@@ -10,10 +10,10 @@ namespace QuizardApp.ViewModels
 {
     public class AvailableQuizzesViewModel : BaseViewModel
     {
-        private ObservableCollection<Quiz> availableQuizzes;
-        private Quiz selectedQuiz;
-        private string searchText;
-        private string message;
+        private ObservableCollection<Quiz> availableQuizzes = new();
+        private Quiz? selectedQuiz;
+        private string searchText = string.Empty;
+        private string message = string.Empty;
 
         public ObservableCollection<Quiz> AvailableQuizzes
         {
@@ -21,7 +21,7 @@ namespace QuizardApp.ViewModels
             set => SetProperty(ref availableQuizzes, value);
         }
 
-        public Quiz SelectedQuiz
+        public Quiz? SelectedQuiz
         {
             get => selectedQuiz;
             set => SetProperty(ref selectedQuiz, value);
@@ -96,7 +96,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteTakeQuiz(object obj)
+        private void ExecuteTakeQuiz(object? obj)
         {
             if (SelectedQuiz == null)
             {
@@ -144,7 +144,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteViewQuizDetails(object obj)
+        private void ExecuteViewQuizDetails(object? obj)
         {
             if (SelectedQuiz == null)
             {
@@ -163,7 +163,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteSaveQuiz(object obj)
+        private void ExecuteSaveQuiz(object? obj)
         {
             if (SelectedQuiz == null)
             {
@@ -209,7 +209,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteLikeQuiz(object obj)
+        private void ExecuteLikeQuiz(object? obj)
         {
             if (SelectedQuiz == null)
             {
@@ -255,7 +255,7 @@ namespace QuizardApp.ViewModels
             }
         }
 
-        private void ExecuteRefresh(object obj)
+        private void ExecuteRefresh(object? obj)
         {
             LoadQuizzes();
         }
