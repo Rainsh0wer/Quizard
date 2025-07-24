@@ -1,48 +1,138 @@
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using QuizardApp.Models;
 
 namespace QuizardApp.ViewModels
 {
-    public class LoginViewModel : INotifyPropertyChanged
+    public class LoginViewModel : BaseViewModel
     {
-        private string _username;
+        private readonly MainCursorViewModel _mainCursor;
+        private string _username = string.Empty;
+        private string _password = string.Empty;
+        private string _errorMessage = string.Empty;
+        private bool _isLoading = false;
+
+        public LoginViewModel(MainCursorViewModel mainCursor)
+        {
+            _mainCursor = mainCursor;
+            LoginCommand = new RelayCommand(async () => await LoginAsync(), CanLogin);
+            RegisterCommand = new RelayCommand(() => _mainCursor.NavigateTo(AppState.Register));
+        }
+
         public string Username
         {
             get => _username;
-            set { _username = value; OnPropertyChanged(); }
+            set
+            {
+                _username = value;
+                OnPropertyChanged();
+                ((RelayCommand)LoginCommand).RaiseCanExecuteChanged();
+            }
         }
 
-        private string _password;
         public string Password
         {
             get => _password;
-            set { _password = value; OnPropertyChanged(); }
+            set
+            {
+                _password = value;
+                OnPropertyChanged();
+                ((RelayCommand)LoginCommand).RaiseCanExecuteChanged();
+            }
+        }
+
+        public string ErrorMessage
+        {
+            get => _errorMessage;
+            set
+            {
+                _errorMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set
+            {
+                _isLoading = value;
+                OnPropertyChanged();
+                ((RelayCommand)LoginCommand).RaiseCanExecuteChanged();
+            }
         }
 
         public ICommand LoginCommand { get; }
         public ICommand RegisterCommand { get; }
 
-        public LoginViewModel()
+        private bool CanLogin()
         {
-            LoginCommand = new RelayCommand(Login);
-            RegisterCommand = new RelayCommand(Register);
+            return !IsLoading && !string.IsNullOrWhiteSpace(Username) && !string.IsNullOrWhiteSpace(Password);
         }
 
-        private void Login(object obj)
+        private async Task LoginAsync()
         {
-            // TODO: Xử lý đăng nhập
+            try
+            {
+                IsLoading = true;
+                ErrorMessage = string.Empty;
+
+                await Task.Run(() =>
+                {
+                    using var context = new QuizardContext();
+                    var hashedPassword = HashPassword(Password);
+                    
+                    var user = context.Users.FirstOrDefault(u => 
+                        u.Username == Username && u.PasswordHash == hashedPassword && u.IsActive == true);
+
+                    if (user != null)
+                    {
+                        App.Current.Dispatcher.Invoke(() =>
+                        {
+                            _mainCursor.OnUserLoggedIn(user);
+                        });
+                    }
+                    else
+                    {
+                        App.Current.Dispatcher.Invoke(() =>
+                        {
+                            ErrorMessage = "Invalid username or password.";
+                        });
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = $"Login failed: {ex.Message}";
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
-        private void Register(object obj)
+        private static string HashPassword(string password)
         {
-            // TODO: Chuyển sang màn hình đăng ký
+            using var sha256 = SHA256.Create();
+            var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+            return Convert.ToBase64String(hashedBytes);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        // Demo users for testing
+        public void LoginAsStudent()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            Username = "student1";
+            Password = "password123";
+        }
+
+        public void LoginAsTeacher()
+        {
+            Username = "teacher1";
+            Password = "password123";
         }
     }
 }

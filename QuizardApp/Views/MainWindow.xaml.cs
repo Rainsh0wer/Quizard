@@ -1,5 +1,4 @@
 using System.Windows;
-using QuizardApp.ViewModels;
 
 namespace QuizardApp.Views
 {
@@ -8,7 +7,6 @@ namespace QuizardApp.Views
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
         }
     }
 }
