@@ -159,7 +159,7 @@ namespace QuizardApp.ViewModels
                             QuestionCount = quiz.Questions.Count,
                             StudentAttempts = quiz.StudentQuizzes.Count(sq => sq.FinishedAt != null),
                             IsPublic = quiz.IsPublic ?? true,
-                            CreatedAt = quiz.CreatedAt
+                            CreatedAt = quiz.CreatedAt ?? DateTime.MinValue
                         };
                         Quizzes.Add(quizInfo);
                     }

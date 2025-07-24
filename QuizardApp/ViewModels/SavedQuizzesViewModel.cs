@@ -95,7 +95,7 @@ namespace QuizardApp.ViewModels
                             SubjectName = sq.Quiz.Subject.Name,
                             CreatedBy = sq.Quiz.CreatedByNavigation.FullName,
                             QuestionCount = sq.Quiz.Questions.Count,
-                            SavedAt = sq.SavedAt,
+                            SavedAt = sq.SavedAt ?? DateTime.MinValue,
                             IsPublic = sq.Quiz.IsPublic ?? true
                         };
                         SavedQuizzes.Add(savedQuizInfo);

@@ -89,10 +89,10 @@ namespace QuizardApp.ViewModels
                             SubjectName = sq.Quiz.Subject.Name,
                             Score = sq.Score ?? 0,
                             TotalQuestions = sq.Quiz.Questions.Count,
-                            StartedAt = sq.StartedAt,
+                            StartedAt = sq.StartedAt ?? DateTime.MinValue,
                             FinishedAt = sq.FinishedAt,
-                            Duration = sq.FinishedAt.HasValue ? 
-                                      FormatTimeSpan(sq.FinishedAt.Value - sq.StartedAt) : 
+                            Duration = sq.FinishedAt.HasValue && sq.StartedAt.HasValue ? 
+                                      FormatTimeSpan(sq.FinishedAt.Value - sq.StartedAt.Value) : 
                                       "N/A"
                         };
                         Results.Add(result);
@@ -180,13 +180,13 @@ namespace QuizardApp.ViewModels
     public class StudentQuizResult
     {
         public int StudentQuizId { get; set; }
-        public string QuizTitle { get; set; } = string.Empty; = string.Empty;
-        public string SubjectName { get; set; } = string.Empty; = string.Empty;
+        public string QuizTitle { get; set; } = string.Empty;
+        public string SubjectName { get; set; } = string.Empty;
         public double Score { get; set; }
         public int TotalQuestions { get; set; }
         public DateTime StartedAt { get; set; }
         public DateTime? FinishedAt { get; set; }
-        public string Duration { get; set; } = string.Empty; = string.Empty;
+        public string Duration { get; set; } = string.Empty;
         public string ScorePercentage => $"{Score:F1}/10";
         public string FormattedStartDate => StartedAt.ToString("dd/MM/yyyy HH:mm");
         public string FormattedFinishDate => FinishedAt?.ToString("dd/MM/yyyy HH:mm") ?? "Not completed";

@@ -64,7 +64,7 @@ namespace QuizardApp.ViewModels
         }
 
         // Register Logic
-        private void Register(object parameter)
+        private void Register(object? parameter)
         {
             if (Password != ConfirmPassword)
             {

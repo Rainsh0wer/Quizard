@@ -103,7 +103,7 @@ namespace QuizardApp.ViewModels
                     }
 
                     QuizTitle = studentQuiz.Quiz.Title;
-                    startTime = studentQuiz.StartedAt;
+                    startTime = studentQuiz.StartedAt ?? DateTime.Now;
 
                     Questions.Clear();
                     foreach (var question in studentQuiz.Quiz.Questions.OrderBy(q => q.QuestionId))

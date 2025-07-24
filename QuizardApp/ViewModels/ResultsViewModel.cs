@@ -152,10 +152,10 @@ namespace QuizardApp.ViewModels
                             Score = result.Score ?? 0,
                             CorrectAnswers = correctAnswers,
                             TotalQuestions = totalQuestions,
-                            StartedAt = result.StartedAt,
+                            StartedAt = result.StartedAt ?? DateTime.MinValue,
                             FinishedAt = result.FinishedAt,
-                            Duration = result.FinishedAt.HasValue ? 
-                                      FormatTimeSpan(result.FinishedAt.Value - result.StartedAt) : 
+                            Duration = result.FinishedAt.HasValue && result.StartedAt.HasValue ? 
+                                      FormatTimeSpan(result.FinishedAt.Value - result.StartedAt.Value) : 
                                       "N/A"
                         };
                         QuizResults.Add(resultSummary);
@@ -242,16 +242,16 @@ namespace QuizardApp.ViewModels
     public class QuizResultSummary
     {
         public int StudentQuizId { get; set; }
-        public string StudentName { get; set; } = string.Empty; = string.Empty;
-        public string StudentUsername { get; set; } = string.Empty; = string.Empty;
-        public string QuizTitle { get; set; } = string.Empty; = string.Empty;
-        public string SubjectName { get; set; } = string.Empty; = string.Empty;
+        public string StudentName { get; set; } = string.Empty;
+        public string StudentUsername { get; set; } = string.Empty;
+        public string QuizTitle { get; set; } = string.Empty;
+        public string SubjectName { get; set; } = string.Empty;
         public double Score { get; set; }
         public int CorrectAnswers { get; set; }
         public int TotalQuestions { get; set; }
         public DateTime StartedAt { get; set; }
         public DateTime? FinishedAt { get; set; }
-        public string Duration { get; set; } = string.Empty; = string.Empty;
+        public string Duration { get; set; } = string.Empty;
         public string ScoreDisplay => $"{Score:F1}/10";
         public string AccuracyDisplay => TotalQuestions > 0 ? $"{CorrectAnswers}/{TotalQuestions} ({(CorrectAnswers * 100.0 / TotalQuestions):F1}%)" : "N/A";
         public string FormattedStartDate => StartedAt.ToString("dd/MM/yyyy HH:mm");
