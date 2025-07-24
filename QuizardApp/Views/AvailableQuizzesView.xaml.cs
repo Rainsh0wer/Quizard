@@ -1,4 +1,5 @@
 using System.Windows.Controls;
+using QuizardApp.ViewModels;
 
 namespace QuizardApp.Views
 {
@@ -7,6 +8,7 @@ namespace QuizardApp.Views
         public AvailableQuizzesView()
         {
             InitializeComponent();
+            DataContext = new AvailableQuizzesViewModel();
         }
     }
 }
