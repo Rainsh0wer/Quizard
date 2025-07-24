@@ -5,8 +5,161 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizardApp.Views"
         mc:Ignorable="d"
-        Title="Quizard" Height="600" Width="1000">
+        Title="Quizard - Quiz Application" 
+        Height="800" Width="1200"
+        MinHeight="600" MinWidth="800"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <!-- Include view templates -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ViewTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <!-- Define styles for modern UI -->
+        <Style x:Key="ModernButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF005A9E"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#FF004578"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#FFCCCCCC"/>
+                    <Setter Property="Foreground" Value="#FF666666"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="StatusBarStyle" TargetType="StatusBar">
+            <Setter Property="Background" Value="#FF2D2D30"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+
+        <Style x:Key="ToolBarStyle" TargetType="ToolBar">
+            <Setter Property="Background" Value="#FF3E3E42"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
-        <ContentControl x:Name="MainContent" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>  <!-- Toolbar -->
+            <RowDefinition Height="*"/>     <!-- Main Content -->
+            <RowDefinition Height="Auto"/>  <!-- Status Bar -->
+        </Grid.RowDefinitions>
+
+        <!-- Toolbar -->
+        <ToolBar Grid.Row="0" Style="{StaticResource ToolBarStyle}">
+            <Button Content="🏠 Home" 
+                    Style="{StaticResource ModernButtonStyle}"
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="{Binding CurrentUser.Role, Converter={x:Static local:RoleToDashboardConverter.Instance}}"
+                    Visibility="{Binding IsLoggedIn, Converter={x:Static local:BooleanToVisibilityConverter.Instance}}"/>
+            
+            <Separator Visibility="{Binding IsLoggedIn, Converter={x:Static local:BooleanToVisibilityConverter.Instance}}"/>
+            
+            <!-- Student Toolbar Items -->
+            <StackPanel Orientation="Horizontal" 
+                        Visibility="{Binding IsStudent, Converter={x:Static local:BooleanToVisibilityConverter.Instance}}">
+                <Button Content="📝 Take Quiz" 
+                        Style="{StaticResource ModernButtonStyle}"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="TakeQuiz"/>
+                <Button Content="📊 My Results" 
+                        Style="{StaticResource ModernButtonStyle}"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="ViewResults"/>
+                <Button Content="🔍 Search Subjects" 
+                        Style="{StaticResource ModernButtonStyle}"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="SearchSubjects"/>
+                <Button Content="🎓 Join Class" 
+                        Style="{StaticResource ModernButtonStyle}"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="JoinClass"/>
+            </StackPanel>
+
+            <!-- Teacher Toolbar Items -->
+            <StackPanel Orientation="Horizontal" 
+                        Visibility="{Binding IsTeacher, Converter={x:Static local:BooleanToVisibilityConverter.Instance}}">
+                <Button Content="➕ Create Quiz" 
+                        Style="{StaticResource ModernButtonStyle}"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="CreateQuiz"/>
+                <Button Content="📊 View Results" 
+                        Style="{StaticResource ModernButtonStyle}"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="ViewResults"/>
+                <Button Content="🏫 My Classes" 
+                        Style="{StaticResource ModernButtonStyle}"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="ViewClasses"/>
+                <Button Content="🔍 Browse Subjects" 
+                        Style="{StaticResource ModernButtonStyle}"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="SearchSubjects"/>
+            </StackPanel>
+
+            <!-- Right side items -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="⬅️ Back" 
+                        Style="{StaticResource ModernButtonStyle}"
+                        Command="{Binding GoBackCommand}"
+                        Visibility="{Binding GoBackCommand.CanExecute, Converter={x:Static local:BooleanToVisibilityConverter.Instance}}"/>
+                
+                <TextBlock Text="{Binding CurrentUser.FullName, StringFormat='Welcome, {0}!'}"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           Margin="10,0"
+                           Visibility="{Binding IsLoggedIn, Converter={x:Static local:BooleanToVisibilityConverter.Instance}}"/>
+                
+                <Button Content="🚪 Logout" 
+                        Style="{StaticResource ModernButtonStyle}"
+                        Command="{Binding LogoutCommand}"
+                        Visibility="{Binding IsLoggedIn, Converter={x:Static local:BooleanToVisibilityConverter.Instance}}"/>
+            </StackPanel>
+        </ToolBar>
+
+        <!-- Loading Overlay -->
+        <Grid Grid.Row="1" 
+              Background="#80000000" 
+              Visibility="{Binding IsLoading, Converter={x:Static local:BooleanToVisibilityConverter.Instance}}"
+              Panel.ZIndex="999">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ProgressBar IsIndeterminate="True" Width="200" Height="20" Margin="0,0,0,10"/>
+                <TextBlock Text="Loading..." Foreground="White" HorizontalAlignment="Center" FontSize="16"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Main Content Area -->
+        <ContentControl x:Name="MainContent" 
+                        Grid.Row="1"
+                        Content="{Binding CurrentViewModel}">
+            <ContentControl.ContentTemplateSelector>
+                <local:ViewModelTemplateSelector/>
+            </ContentControl.ContentTemplateSelector>
+        </ContentControl>
+
+        <!-- Status Bar -->
+        <StatusBar Grid.Row="2" Style="{StaticResource StatusBarStyle}">
+            <StatusBarItem>
+                <TextBlock Text="{Binding CurrentState, StringFormat='Current View: {0}'}" FontSize="12"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock Text="{Binding StatusMessage}" FontSize="12" FontWeight="Bold"/>
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>
