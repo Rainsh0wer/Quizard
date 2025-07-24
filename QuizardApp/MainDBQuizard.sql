@@ -1,4 +1,4 @@
-﻿USE [master]
+USE [master]
 
 /*******************************************************************************
    Drop database if it exists
@@ -212,6 +212,19 @@ INSERT INTO [User] (Username, Email, PasswordHash, FullName, Role) VALUES
 ('cory45', 'stephaniebennett@chan.com', 'Nv7!qyLs', N'Peter Vaughn', 'student'),
 ('shelly22', 'tyler75@gmail.com', 'Jr4^ePx!', N'Mariah Park', 'teacher');
 
+-- Thêm nhiều dữ liệu mẫu cho User
+INSERT INTO [User] (Username, Email, PasswordHash, FullName, Role) VALUES
+('user31', 'user31@example.com', 'pass31', N'User 31', 'student'),
+('user32', 'user32@example.com', 'pass32', N'User 32', 'student'),
+('user33', 'user33@example.com', 'pass33', N'User 33', 'teacher'),
+('user34', 'user34@example.com', 'pass34', N'User 34', 'student'),
+('user35', 'user35@example.com', 'pass35', N'User 35', 'teacher'),
+('user36', 'user36@example.com', 'pass36', N'User 36', 'student'),
+('user37', 'user37@example.com', 'pass37', N'User 37', 'student'),
+('user38', 'user38@example.com', 'pass38', N'User 38', 'teacher'),
+('user39', 'user39@example.com', 'pass39', N'User 39', 'student'),
+('user40', 'user40@example.com', 'pass40', N'User 40', 'teacher');
+
 
 -- 2. Subject
 INSERT INTO Subject (Name, Description) VALUES
@@ -226,6 +239,14 @@ INSERT INTO Subject (Name, Description) VALUES
 (N'Economics', N'Economic theory'),
 (N'Art', N'Creative arts');
 
+-- Thêm nhiều Subject
+INSERT INTO Subject (Name, Description) VALUES
+(N'Literature', N'Literature subject'),
+(N'Music', N'Music subject'),
+(N'Sport', N'Sport subject'),
+(N'Philosophy', N'Philosophy subject'),
+(N'Psychology', N'Psychology subject');
+
 -- 3. Quiz
 INSERT INTO Quiz (SubjectID, Title, Description, CreatedBy) VALUES
 (1, N'Quiz 1', N'Description 1', 1),
@@ -238,6 +259,14 @@ INSERT INTO Quiz (SubjectID, Title, Description, CreatedBy) VALUES
 (8, N'Quiz 8', N'Description 8', 2),
 (9, N'Quiz 9', N'Description 9', 3),
 (10, N'Quiz 10', N'Description 10', 1);
+
+-- Thêm nhiều Quiz
+INSERT INTO Quiz (SubjectID, Title, Description, CreatedBy) VALUES
+(11, N'Quiz 11', N'Description 11', 31),
+(12, N'Quiz 12', N'Description 12', 32),
+(13, N'Quiz 13', N'Description 13', 33),
+(14, N'Quiz 14', N'Description 14', 34),
+(15, N'Quiz 15', N'Description 15', 35);
 
 -- 4. Question
 INSERT INTO Question (QuizID, Content, CorrectOption, Explanation) VALUES
@@ -252,10 +281,41 @@ INSERT INTO Question (QuizID, Content, CorrectOption, Explanation) VALUES
 (9, N'Câu hỏi 9?', 'A', N'Giải thích 9'),
 (10, N'Câu hỏi 10?', 'B', N'Giải thích 10');
 
+-- Thêm nhiều Question
+INSERT INTO Question (QuizID, Content, CorrectOption, Explanation) VALUES
+(11, N'Câu hỏi 11?', 'A', N'Giải thích 11'),
+(12, N'Câu hỏi 12?', 'B', N'Giải thích 12'),
+(13, N'Câu hỏi 13?', 'C', N'Giải thích 13'),
+(14, N'Câu hỏi 14?', 'D', N'Giải thích 14'),
+(15, N'Câu hỏi 15?', 'A', N'Giải thích 15');
+
 -- 5. QuestionOption
 INSERT INTO QuestionOption (QuestionID, OptionLabel, Content)
 SELECT QuestionID, X.OptionLabel, CONCAT(N'Option ', X.OptionLabel, N' for Question ', QuestionID)
 FROM Question CROSS JOIN (SELECT 'A' AS OptionLabel UNION SELECT 'B' UNION SELECT 'C' UNION SELECT 'D') AS X;
+
+-- Thêm nhiều QuestionOption
+INSERT INTO QuestionOption (QuestionID, OptionLabel, Content) VALUES
+(11, 'A', N'Option A for Question 11'),
+(11, 'B', N'Option B for Question 11'),
+(11, 'C', N'Option C for Question 11'),
+(11, 'D', N'Option D for Question 11'),
+(12, 'A', N'Option A for Question 12'),
+(12, 'B', N'Option B for Question 12'),
+(12, 'C', N'Option C for Question 12'),
+(12, 'D', N'Option D for Question 12'),
+(13, 'A', N'Option A for Question 13'),
+(13, 'B', N'Option B for Question 13'),
+(13, 'C', N'Option C for Question 13'),
+(13, 'D', N'Option D for Question 13'),
+(14, 'A', N'Option A for Question 14'),
+(14, 'B', N'Option B for Question 14'),
+(14, 'C', N'Option C for Question 14'),
+(14, 'D', N'Option D for Question 14'),
+(15, 'A', N'Option A for Question 15'),
+(15, 'B', N'Option B for Question 15'),
+(15, 'C', N'Option C for Question 15'),
+(15, 'D', N'Option D for Question 15');
 
 -- 6. StudentQuiz
 INSERT INTO StudentQuiz (StudentID, QuizID, Score) VALUES
@@ -270,6 +330,14 @@ INSERT INTO StudentQuiz (StudentID, QuizID, Score) VALUES
 (5, 9, 6.8),
 (6, 10, 9.2);
 
+-- Thêm nhiều StudentQuiz
+INSERT INTO StudentQuiz (StudentID, QuizID, Score) VALUES
+(31, 11, 8.0),
+(32, 12, 7.5),
+(33, 13, 9.0),
+(34, 14, 6.5),
+(35, 15, 7.0);
+
 -- 7. StudentAnswer
 INSERT INTO StudentAnswer (StudentQuizID, QuestionID, SelectedOption, IsCorrect) VALUES
 (1, 1, 'A', 1),
@@ -282,6 +350,14 @@ INSERT INTO StudentAnswer (StudentQuizID, QuestionID, SelectedOption, IsCorrect)
 (8, 8, 'D', 1),
 (9, 9, 'A', 1),
 (10, 10, 'B', 1);
+
+-- Thêm nhiều StudentAnswer
+INSERT INTO StudentAnswer (StudentQuizID, QuestionID, SelectedOption, IsCorrect) VALUES
+(11, 11, 'A', 1),
+(12, 12, 'B', 1),
+(13, 13, 'C', 1),
+(14, 14, 'D', 1),
+(15, 15, 'A', 1);
 
 -- 8. Classroom
 INSERT INTO Classroom (ClassName, TeacherID) VALUES
@@ -296,6 +372,11 @@ INSERT INTO Classroom (ClassName, TeacherID) VALUES
 (N'Class I', 3),
 (N'Class J', 1);
 
+-- Thêm nhiều Classroom
+INSERT INTO Classroom (ClassName, TeacherID) VALUES
+(N'Class K', 33),
+(N'Class L', 35);
+
 -- 9. Enrollment
 INSERT INTO Enrollment (ClassID, StudentID) VALUES
 (1, 4), (1, 5),
@@ -303,6 +384,10 @@ INSERT INTO Enrollment (ClassID, StudentID) VALUES
 (3, 8), (3, 9),
 (4, 10), (5, 4),
 (6, 5), (7, 6);
+
+-- Thêm nhiều Enrollment
+INSERT INTO Enrollment (ClassID, StudentID) VALUES
+(11, 31), (12, 32);
 
 -- 10. QuizAssignment
 INSERT INTO QuizAssignment (QuizID, ClassID, DueDate) VALUES
@@ -317,14 +402,27 @@ INSERT INTO QuizAssignment (QuizID, ClassID, DueDate) VALUES
 (9, 9, GETDATE()+7),
 (10, 10, GETDATE()+7);
 
+-- Thêm nhiều QuizAssignment
+INSERT INTO QuizAssignment (QuizID, ClassID, DueDate) VALUES
+(11, 11, GETDATE()+7),
+(12, 12, GETDATE()+7);
+
 -- 11. Tag
 INSERT INTO Tag (Name) VALUES
 (N'Algebra'), (N'Geometry'), (N'Physics'), (N'Chemistry'), (N'History'),
 (N'Biology'), (N'English'), (N'Programming'), (N'Basics'), (N'Advanced');
 
+-- Thêm nhiều Tag
+INSERT INTO Tag (Name) VALUES
+(N'Logic'), (N'Critical Thinking');
+
 -- 12. QuestionTag
 INSERT INTO QuestionTag (QuestionID, TagID) VALUES
 (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);
+
+-- Thêm nhiều QuestionTag
+INSERT INTO QuestionTag (QuestionID, TagID) VALUES
+(11,11),(12,12);
 
 -- 13. Feedback
 INSERT INTO Feedback (StudentID, QuizID, Rating, Comment) VALUES
@@ -339,10 +437,23 @@ INSERT INTO Feedback (StudentID, QuizID, Rating, Comment) VALUES
 (5, 9, 3, N'So so'),
 (6, 10, 4, N'Fair');
 
+-- Thêm nhiều Feedback
+INSERT INTO Feedback (StudentID, QuizID, Rating, Comment) VALUES
+(31, 11, 5, N'Excellent!'),
+(32, 12, 4, N'Good!');
+
 -- 14. QuizLike
 INSERT INTO QuizLike (UserID, QuizID) VALUES
 (4,1),(5,2),(6,3),(7,4),(8,5),(9,6),(10,7),(4,8),(5,9),(6,10);
 
+-- Thêm nhiều QuizLike
+INSERT INTO QuizLike (UserID, QuizID) VALUES
+(31,11),(32,12);
+
 -- 15. SavedQuiz
 INSERT INTO SavedQuiz (StudentID, QuizID) VALUES
 (4,1),(5,2),(6,3),(7,4),(8,5),(9,6),(10,7),(4,8),(5,9),(6,10);
+
+-- Thêm nhiều SavedQuiz
+INSERT INTO SavedQuiz (StudentID, QuizID) VALUES
+(31,11),(32,12);
