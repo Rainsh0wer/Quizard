@@ -9,7 +9,7 @@ namespace QuizardApp.Views
         public StudentDashboardView(ICommand? showAvailableQuizzesCommand = null, ICommand? showSubjectsCommand = null, ICommand? showMyResultsCommand = null)
         {
             InitializeComponent();
-            DataContext = new StudentDashboardViewViewModel(showAvailableQuizzesCommand, showSubjectsCommand, showMyResultsCommand);
+            DataContext = new StudentDashboardViewModel();
         }
     }
 }
