@@ -89,19 +89,31 @@ namespace QuizardApp.ViewModels
         public ICommand ManageClassroomsCommand { get; }
         public ICommand ViewQuizDetailsCommand { get; }
         public ICommand RefreshCommand { get; }
+        // Command điều hướng từ ViewModel cha
+        public ICommand? ShowQuizzesCommand { get; set; }
+        public ICommand? ShowSubjectsCommand { get; set; }
+        public ICommand? ShowResultsCommand { get; set; }
+        public ICommand? ShowClassroomsCommand { get; set; }
 
-        public TeacherDashboardViewViewModel()
+        public TeacherDashboardViewViewModel(
+            ICommand? showQuizzesCommand = null,
+            ICommand? showSubjectsCommand = null,
+            ICommand? showResultsCommand = null,
+            ICommand? showClassroomsCommand = null)
         {
             RecentActivities = new ObservableCollection<RecentQuizActivity>();
             PopularQuizzes = new ObservableCollection<PopularQuiz>();
             SubjectStats = new ObservableCollection<SubjectStatistic>();
-            
             CreateQuizCommand = new RelayCommand(ExecuteCreateQuiz);
             ViewAllResultsCommand = new RelayCommand(ExecuteViewAllResults);
             ManageClassroomsCommand = new RelayCommand(ExecuteManageClassrooms);
             ViewQuizDetailsCommand = new RelayCommand(ExecuteViewQuizDetails);
             RefreshCommand = new RelayCommand(ExecuteRefresh);
-            
+            // Gán command điều hướng nếu có
+            ShowQuizzesCommand = showQuizzesCommand;
+            ShowSubjectsCommand = showSubjectsCommand;
+            ShowResultsCommand = showResultsCommand;
+            ShowClassroomsCommand = showClassroomsCommand;
             LoadDashboardData();
         }
 

@@ -74,17 +74,26 @@ namespace QuizardApp.ViewModels
         public ICommand ViewAllResultsCommand { get; }
         public ICommand TakeQuizCommand { get; }
         public ICommand RefreshCommand { get; }
+        // Command điều hướng từ ViewModel cha
+        public ICommand? ShowAvailableQuizzesCommand { get; set; }
+        public ICommand? ShowSubjectsCommand { get; set; }
+        public ICommand? ShowMyResultsCommand { get; set; }
 
-        public StudentDashboardViewViewModel()
+        public StudentDashboardViewViewModel(
+            ICommand? showAvailableQuizzesCommand = null,
+            ICommand? showSubjectsCommand = null,
+            ICommand? showMyResultsCommand = null)
         {
             RecentResults = new ObservableCollection<RecentQuizResult>();
             RecommendedQuizzes = new ObservableCollection<RecommendedQuiz>();
-            
             ViewAllQuizzesCommand = new RelayCommand(ExecuteViewAllQuizzes);
             ViewAllResultsCommand = new RelayCommand(ExecuteViewAllResults);
             TakeQuizCommand = new RelayCommand(ExecuteTakeQuiz);
             RefreshCommand = new RelayCommand(ExecuteRefresh);
-            
+            // Gán command điều hướng nếu có
+            ShowAvailableQuizzesCommand = showAvailableQuizzesCommand;
+            ShowSubjectsCommand = showSubjectsCommand;
+            ShowMyResultsCommand = showMyResultsCommand;
             LoadDashboardData();
         }
 
