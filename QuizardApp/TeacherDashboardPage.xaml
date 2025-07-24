@@ -1,0 +1,169 @@
+<Page x:Class="QuizardApp.TeacherDashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Title="Teacher Dashboard">
+
+    <Page.Resources>
+        <Style x:Key="SidebarButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15,10"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="5" Margin="5,2">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#4A90E2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#4A90E2"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#357ABD"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#2C3E50">
+            <StackPanel>
+                <!-- User Info -->
+                <Border Background="#34495E" Padding="20,15">
+                    <StackPanel>
+                        <TextBlock Text="{Binding CurrentUserName}" 
+                                   Foreground="White" 
+                                   FontSize="16" 
+                                   FontWeight="Bold"/>
+                        <TextBlock Text="Teacher" 
+                                   Foreground="#BDC3C7" 
+                                   FontSize="12"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Navigation Menu -->
+                <StackPanel Margin="0,20,0,0">
+                    <Button Style="{StaticResource SidebarButtonStyle}"
+                            Command="{Binding ShowDashboardCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="🏠" Margin="0,0,10,0"/>
+                            <TextBlock Text="Dashboard"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource SidebarButtonStyle}"
+                            Command="{Binding ShowSubjectsCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="📚" Margin="0,0,10,0"/>
+                            <TextBlock Text="Subjects"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource SidebarButtonStyle}"
+                            Command="{Binding ShowQuizzesCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="📝" Margin="0,0,10,0"/>
+                            <TextBlock Text="My Quizzes"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource SidebarButtonStyle}"
+                            Command="{Binding ShowClassroomsCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="🏫" Margin="0,0,10,0"/>
+                            <TextBlock Text="Classrooms"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource SidebarButtonStyle}"
+                            Command="{Binding ShowResultsCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="📊" Margin="0,0,10,0"/>
+                            <TextBlock Text="Results"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <!-- Logout Button -->
+                <Button Style="{StaticResource SidebarButtonStyle}"
+                        Command="{Binding LogoutCommand}"
+                        VerticalAlignment="Bottom"
+                        Margin="0,50,0,20">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="🚪" Margin="0,0,10,0"/>
+                        <TextBlock Text="Logout"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Column="1" Background="#ECF0F1">
+            <!-- Header -->
+            <Border Background="White" 
+                    Height="70" 
+                    VerticalAlignment="Top"
+                    BorderBrush="#BDC3C7" 
+                    BorderThickness="0,0,0,1">
+                <Grid Margin="30,0">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="{Binding CurrentPageTitle}" 
+                                   FontSize="24" 
+                                   FontWeight="Bold" 
+                                   Foreground="#2C3E50"/>
+                        <TextBlock Text="{Binding CurrentPageSubtitle}" 
+                                   FontSize="14" 
+                                   Foreground="#7F8C8D"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Content Area -->
+            <ScrollViewer Margin="0,70,0,0" VerticalScrollBarVisibility="Auto">
+                <ContentControl Content="{Binding CurrentView}" Margin="30"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>

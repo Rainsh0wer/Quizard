@@ -1,14 +1,13 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System;
+using System.Linq;
 using System.Windows.Input;
 using QuizardApp.Models;
 using System.Windows;
-using System.Windows.Navigation;
+using QuizardApp.Services;
 
 namespace QuizardApp.ViewModels
 {
-    public class LoginViewModel : INotifyPropertyChanged
+    public class LoginViewModel : BaseViewModel
     {
         private string username;
         private string password;
@@ -17,19 +16,19 @@ namespace QuizardApp.ViewModels
         public string Username
         {
             get => username;
-            set { username = value; OnPropertyChanged(); }
+            set => SetProperty(ref username, value);
         }
 
         public string Password
         {
             get => password;
-            set { password = value; OnPropertyChanged(); }
+            set => SetProperty(ref password, value);
         }
 
         public string Message
         {
             get => message;
-            set { message = value; OnPropertyChanged(); }
+            set => SetProperty(ref message, value);
         }
 
         public ICommand LoginCommand { get; }
@@ -43,44 +42,47 @@ namespace QuizardApp.ViewModels
 
         private void ExecuteLogin(object obj)
         {
-            using (var context = new QuizardContext())
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
             {
-                var user = context.Users
-                                  .FirstOrDefault(u => u.Username == Username && u.PasswordHash == Password);
+                Message = "Please enter both username and password.";
+                return;
+            }
 
-                if (user != null)
+            try
+            {
+                using (var context = new QuizardContext())
                 {
-                    if (user.Role == "teacher")
-                        Message = $"Welcome Teacher, {user.FullName}!";
-                    else if (user.Role == "student")
-                        Message = $"Welcome Student, {user.FullName}!";
+                    var user = context.Users
+                                      .FirstOrDefault(u => u.Username == Username && u.PasswordHash == Password && u.IsActive == true);
+
+                    if (user != null)
+                    {
+                        CurrentUserService.Instance.SetCurrentUser(user);
+                        
+                        if (user.Role == "teacher")
+                        {
+                            NavigationService.Instance.Navigate(new TeacherDashboardPage());
+                        }
+                        else if (user.Role == "student")
+                        {
+                            NavigationService.Instance.Navigate(new StudentDashboardPage());
+                        }
+                    }
                     else
-                        Message = $"Welcome {user.FullName}!";
+                    {
+                        Message = "Invalid username or password, or account is inactive.";
+                    }
                 }
-                else
-                {
-                    Message = "Invalid username or password.";
-                }
+            }
+            catch (Exception ex)
+            {
+                Message = $"Login error: {ex.Message}";
             }
         }
 
         private void ExecuteSignUp(object obj)
         {
-            // chuyển hướng sang RegisterPage nếu xài NavigationService
-            var registerPage = new RegisterPage();
-
-            // nếu LoginPage đang nằm trong một Frame, phải lấy NavigationService từ Frame
-            var navService = NavigationService.GetNavigationService(Application.Current.MainWindow.Content as DependencyObject);
-            navService?.Navigate(registerPage);
-
-            // nếu không được thì dùng Frame trong MainWindow
-            // ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(registerPage);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            NavigationService.Instance.Navigate(new RegisterPage());
         }
     }
 }
