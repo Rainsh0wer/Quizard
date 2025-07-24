@@ -78,6 +78,10 @@ namespace QuizardApp.ViewModels
         public ICommand? ShowAvailableQuizzesCommand { get; set; }
         public ICommand? ShowSubjectsCommand { get; set; }
         public ICommand? ShowMyResultsCommand { get; set; }
+        // Command trung gian để gọi command cha
+        public ICommand ShowAvailableQuizzesRelayCommand { get; }
+        public ICommand ShowSubjectsRelayCommand { get; }
+        public ICommand ShowMyResultsRelayCommand { get; }
 
         public StudentDashboardViewViewModel(
             ICommand? showAvailableQuizzesCommand = null,
@@ -94,6 +98,10 @@ namespace QuizardApp.ViewModels
             ShowAvailableQuizzesCommand = showAvailableQuizzesCommand;
             ShowSubjectsCommand = showSubjectsCommand;
             ShowMyResultsCommand = showMyResultsCommand;
+            // Command trung gian
+            ShowAvailableQuizzesRelayCommand = new RelayCommand(_ => ShowAvailableQuizzesCommand?.Execute(null));
+            ShowSubjectsRelayCommand = new RelayCommand(_ => ShowSubjectsCommand?.Execute(null));
+            ShowMyResultsRelayCommand = new RelayCommand(_ => ShowMyResultsCommand?.Execute(null));
             LoadDashboardData();
         }
 
