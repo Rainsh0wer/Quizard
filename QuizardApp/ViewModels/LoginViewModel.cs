@@ -66,6 +66,7 @@ namespace QuizardApp.ViewModels
                         else if (user.Role == "student")
                         {
                             AppNavigationService.Instance.Navigate(new StudentDashboardPage());
+
                         }
                     }
                     else

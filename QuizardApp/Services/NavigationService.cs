@@ -4,10 +4,12 @@ using System.Windows.Navigation;
 
 namespace QuizardApp.Services
 {
+
     public class AppNavigationService
     {
         private static AppNavigationService _instance;
         public static AppNavigationService Instance => _instance ??= new AppNavigationService();
+
 
         private NavigationWindow _navigationWindow;
 
