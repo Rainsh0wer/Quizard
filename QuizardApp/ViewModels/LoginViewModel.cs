@@ -58,6 +58,7 @@ namespace QuizardApp.ViewModels
                     if (user != null)
                     {
                         CurrentUserService.Instance.SetCurrentUser(user);
+                        Message = "Login successful!";
                         
                         if (user.Role == "teacher")
                         {
@@ -66,7 +67,6 @@ namespace QuizardApp.ViewModels
                         else if (user.Role == "student")
                         {
                             AppNavigationService.Instance.Navigate(new StudentDashboardPage());
-
                         }
                     }
                     else
