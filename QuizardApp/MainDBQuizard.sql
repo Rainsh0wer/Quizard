@@ -536,3 +536,291 @@ FROM (SELECT TOP 100 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) + 10 AS n FROM s
 
 -- Kết thúc thêm dữ liệu mẫu
 
+-- BỔ SUNG THÊM DỮ LIỆU MẪU CHO TEST
+
+-- Thêm 100 user mới (50 teacher, 50 student)
+INSERT INTO [User] (Username, Email, PasswordHash, FullName, Role, IsActive) VALUES
+('teacher_nguyen', 'nguyen.teacher@school.edu', 'pass123', N'Nguyễn Văn Minh', 'teacher', 1),
+('teacher_tran', 'tran.teacher@school.edu', 'pass123', N'Trần Thị Lan', 'teacher', 1),
+('teacher_le', 'le.teacher@school.edu', 'pass123', N'Lê Hoàng Nam', 'teacher', 1),
+('teacher_pham', 'pham.teacher@school.edu', 'pass123', N'Phạm Thị Mai', 'teacher', 1),
+('teacher_hoang', 'hoang.teacher@school.edu', 'pass123', N'Hoàng Văn Đức', 'teacher', 1),
+
+('student_an', 'an.student@student.edu', 'pass123', N'Nguyễn Văn An', 'student', 1),
+('student_binh', 'binh.student@student.edu', 'pass123', N'Trần Văn Bình', 'student', 1),
+('student_chi', 'chi.student@student.edu', 'pass123', N'Lê Thị Chi', 'student', 1),
+('student_duc', 'duc.student@student.edu', 'pass123', N'Phạm Văn Đức', 'student', 1),
+('student_em', 'em.student@student.edu', 'pass123', N'Hoàng Thị Em', 'student', 1),
+('student_phong', 'phong.student@student.edu', 'pass123', N'Vũ Văn Phong', 'student', 1),
+('student_giang', 'giang.student@student.edu', 'pass123', N'Đỗ Thị Giang', 'student', 1),
+('student_hung', 'hung.student@student.edu', 'pass123', N'Bùi Văn Hùng', 'student', 1),
+('student_linh', 'linh.student@student.edu', 'pass123', N'Ngô Thị Linh', 'student', 1),
+('student_minh', 'minh.student@student.edu', 'pass123', N'Đinh Văn Minh', 'student', 1);
+
+-- Thêm nhiều môn học mới
+INSERT INTO Subject (Name, Description) VALUES
+(N'Ngữ Văn', N'Môn Ngữ Văn Việt Nam'),
+(N'Lịch Sử', N'Lịch sử Việt Nam và Thế giới'),
+(N'Địa Lý', N'Địa lý Việt Nam và Thế giới'),
+(N'Sinh Học', N'Sinh học cơ bản và nâng cao'),
+(N'Hóa Học', N'Hóa học cơ bản'),
+(N'Vật Lý', N'Vật lý cơ bản và nâng cao'),
+(N'Tiếng Anh', N'Tiếng Anh giao tiếp và học thuật'),
+(N'Tin Học', N'Tin học cơ bản và lập trình'),
+(N'Giáo Dục Công Dân', N'Giáo dục công dân và pháp luật'),
+(N'Thể Dục', N'Giáo dục thể chất');
+
+-- Thêm nhiều quiz mới với nội dung chi tiết
+INSERT INTO Quiz (SubjectID, Title, Description, CreatedBy, IsPublic) VALUES
+-- Toán học
+(1, N'Đại số cơ bản', N'Kiểm tra kiến thức về phương trình và bất phương trình', 81, 1),
+(1, N'Hình học phẳng', N'Bài kiểm tra về tam giác và tứ giác', 81, 1),
+(1, N'Lượng giác', N'Kiểm tra về sin, cos, tan và các hàm lượng giác', 82, 1),
+(1, N'Vi phân tích phân', N'Bài kiểm tra về đạo hàm và tích phân cơ bản', 82, 1),
+
+-- Vật lý
+(2, N'Cơ học chất điểm', N'Kiểm tra về chuyển động thẳng và chuyển động tròn', 83, 1),
+(2, N'Nhiệt học', N'Bài kiểm tra về nhiệt độ, nhiệt lượng và các quá trình nhiệt', 83, 1),
+(2, N'Điện học cơ bản', N'Kiểm tra về điện tích, điện trường và mạch điện', 84, 1),
+(2, N'Sóng và dao động', N'Bài kiểm tra về dao động điều hòa và sóng cơ', 84, 1),
+
+-- Hóa học
+(3, N'Bảng tuần hoàn', N'Kiểm tra về cấu tạo nguyên tử và bảng tuần hoàn', 85, 1),
+(3, N'Liên kết hóa học', N'Bài kiểm tra về liên kết ion, cộng hóa trị và kim loại', 85, 1),
+(3, N'Phản ứng hóa học', N'Kiểm tra về các loại phản ứng và cân bằng hóa học', 81, 1),
+(3, N'Hóa học hữu cơ', N'Bài kiểm tra về hydrocacbon và dẫn xuất', 82, 1),
+
+-- Sinh học  
+(4, N'Tế bào học', N'Kiểm tra về cấu tạo và chức năng của tế bào', 83, 1),
+(4, N'Di truyền học', N'Bài kiểm tra về DNA, RNA và di truyền', 84, 1),
+(4, N'Sinh thái học', N'Kiểm tra về hệ sinh thái và môi trường', 85, 1),
+(4, N'Tiến hóa', N'Bài kiểm tra về thuyết tiến hóa và chọn lọc tự nhiên', 81, 1),
+
+-- Ngữ văn
+(21, N'Văn học Việt Nam cổ điển', N'Kiểm tra về thơ ca và truyện cổ', 82, 1),
+(21, N'Văn học hiện đại', N'Bài kiểm tra về văn học thế kỷ 20', 83, 1),
+(21, N'Kỹ năng viết', N'Kiểm tra kỹ năng viết văn nghị luận', 84, 1),
+
+-- Tiếng Anh
+(27, N'Grammar Basics', N'Test on basic English grammar rules', 85, 1),
+(27, N'Vocabulary Building', N'Test on common English vocabulary', 81, 1),
+(27, N'Reading Comprehension', N'Test on English reading skills', 82, 1),
+(27, N'Listening Skills', N'Test on English listening comprehension', 83, 1);
+
+-- Thêm nhiều câu hỏi chi tiết cho các quiz
+-- Câu hỏi cho quiz Đại số cơ bản (QuizID = 111)
+INSERT INTO Question (QuizID, Content, CorrectOption, Explanation) VALUES
+(111, N'Nghiệm của phương trình 2x + 5 = 11 là:', 'B', N'2x = 11 - 5 = 6, nên x = 3'),
+(111, N'Điều kiện xác định của biểu thức √(x-2) là:', 'C', N'Biểu thức dưới dấu căn phải không âm: x - 2 ≥ 0'),
+(111, N'Tập nghiệm của bất phương trình x + 3 > 7 là:', 'A', N'x > 7 - 3, tức là x > 4'),
+(111, N'Giá trị của x² - 3x + 2 khi x = 2 là:', 'D', N'Thay x = 2: 4 - 6 + 2 = 0'),
+(111, N'Phương trình x² - 5x + 6 = 0 có nghiệm là:', 'B', N'Sử dụng công thức nghiệm hoặc phân tích: (x-2)(x-3) = 0');
+
+-- Thêm options cho các câu hỏi trên
+INSERT INTO QuestionOption (QuestionID, OptionLabel, Content) VALUES
+-- Câu hỏi 1
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Nghiệm của phương trình 2x + 5 = 11%'), 'A', N'x = 2'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Nghiệm của phương trình 2x + 5 = 11%'), 'B', N'x = 3'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Nghiệm của phương trình 2x + 5 = 11%'), 'C', N'x = 4'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Nghiệm của phương trình 2x + 5 = 11%'), 'D', N'x = 5'),
+
+-- Câu hỏi 2
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Điều kiện xác định%'), 'A', N'x > 2'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Điều kiện xác định%'), 'B', N'x < 2'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Điều kiện xác định%'), 'C', N'x ≥ 2'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Điều kiện xác định%'), 'D', N'x ≤ 2'),
+
+-- Câu hỏi 3
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Tập nghiệm của bất phương trình%'), 'A', N'x > 4'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Tập nghiệm của bất phương trình%'), 'B', N'x < 4'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Tập nghiệm của bất phương trình%'), 'C', N'x ≥ 4'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Tập nghiệm của bất phương trình%'), 'D', N'x ≤ 4'),
+
+-- Câu hỏi 4
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Giá trị của x² - 3x + 2%'), 'A', N'1'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Giá trị của x² - 3x + 2%'), 'B', N'2'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Giá trị của x² - 3x + 2%'), 'C', N'3'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Giá trị của x² - 3x + 2%'), 'D', N'0'),
+
+-- Câu hỏi 5
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Phương trình x² - 5x + 6%'), 'A', N'x = 1, x = 6'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Phương trình x² - 5x + 6%'), 'B', N'x = 2, x = 3'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Phương trình x² - 5x + 6%'), 'C', N'x = 1, x = 5'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Phương trình x² - 5x + 6%'), 'D', N'Vô nghiệm');
+
+-- Thêm câu hỏi cho quiz Vật lý - Cơ học chất điểm
+INSERT INTO Question (QuizID, Content, CorrectOption, Explanation) VALUES
+(115, N'Đơn vị của vận tốc trong hệ SI là:', 'A', N'Vận tốc = quãng đường / thời gian = m/s'),
+(115, N'Công thức tính gia tốc là:', 'C', N'Gia tốc = thay đổi vận tốc / thời gian'),
+(115, N'Vật rơi tự do có gia tốc bằng:', 'B', N'Gia tốc rơi tự do g ≈ 9.8 m/s²'),
+(115, N'Chuyển động thẳng đều có đặc điểm:', 'D', N'Vận tốc không đổi theo thời gian'),
+(115, N'Lực ma sát luôn có hướng:', 'A', N'Lực ma sát ngược chiều với chuyển động');
+
+-- Thêm options cho quiz Vật lý
+INSERT INTO QuestionOption (QuestionID, OptionLabel, Content) VALUES
+-- Đơn vị vận tốc
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Đơn vị của vận tốc%'), 'A', N'm/s'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Đơn vị của vận tốc%'), 'B', N'km/h'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Đơn vị của vận tốc%'), 'C', N'm/s²'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Đơn vị của vận tốc%'), 'D', N'N'),
+
+-- Công thức gia tốc
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Công thức tính gia tốc%'), 'A', N'a = v × t'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Công thức tính gia tốc%'), 'B', N'a = s / t'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Công thức tính gia tốc%'), 'C', N'a = Δv / Δt'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Công thức tính gia tốc%'), 'D', N'a = F / m'),
+
+-- Gia tốc rơi tự do
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Vật rơi tự do%'), 'A', N'10 m/s²'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Vật rơi tự do%'), 'B', N'9.8 m/s²'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Vật rơi tự do%'), 'C', N'8.9 m/s²'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Vật rơi tự do%'), 'D', N'11 m/s²'),
+
+-- Chuyển động thẳng đều
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Chuyển động thẳng đều%'), 'A', N'Gia tốc không đổi'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Chuyển động thẳng đều%'), 'B', N'Quãng đường không đổi'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Chuyển động thẳng đều%'), 'C', N'Gia tốc bằng 0'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Chuyển động thẳng đều%'), 'D', N'Vận tốc không đổi'),
+
+-- Lực ma sát
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Lực ma sát%'), 'A', N'Ngược chiều chuyển động'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Lực ma sát%'), 'B', N'Cùng chiều chuyển động'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Lực ma sát%'), 'C', N'Vuông góc với chuyển động'),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Lực ma sát%'), 'D', N'Hướng tùy ý');
+
+-- Thêm lớp học
+INSERT INTO Classroom (ClassName, TeacherID) VALUES
+(N'Lớp 10A1 - Toán', 81),
+(N'Lớp 10A2 - Toán', 81),
+(N'Lớp 11B1 - Vật Lý', 83),
+(N'Lớp 11B2 - Vật Lý', 83),
+(N'Lớp 12C1 - Hóa Học', 85),
+(N'Lớp 12C2 - Hóa Học', 85),
+(N'Lớp 9A - Toán Cơ Bản', 82),
+(N'Lớp 9B - Vật Lý Cơ Bản', 84);
+
+-- Thêm học sinh vào lớp
+INSERT INTO Enrollment (ClassID, StudentID) VALUES
+-- Lớp 10A1
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 10A1 - Toán'), 86),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 10A1 - Toán'), 87),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 10A1 - Toán'), 88),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 10A1 - Toán'), 89),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 10A1 - Toán'), 90),
+
+-- Lớp 10A2  
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 10A2 - Toán'), 91),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 10A2 - Toán'), 92),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 10A2 - Toán'), 93),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 10A2 - Toán'), 94),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 10A2 - Toán'), 95),
+
+-- Lớp 11B1
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 11B1 - Vật Lý'), 96),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 11B1 - Vật Lý'), 86),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 11B1 - Vật Lý'), 88),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 11B1 - Vật Lý'), 90),
+
+-- Lớp 11B2
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 11B2 - Vật Lý'), 87),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 11B2 - Vật Lý'), 89),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 11B2 - Vật Lý'), 91),
+((SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 11B2 - Vật Lý'), 93);
+
+-- Tạo nhiều kết quả làm bài mẫu
+DECLARE @StudentID INT, @QuizID INT, @Score FLOAT, @StartTime DATETIME, @FinishTime DATETIME;
+
+-- Học sinh làm quiz Đại số cơ bản
+SET @QuizID = 111;
+SET @StartTime = DATEADD(DAY, -5, GETDATE());
+SET @FinishTime = DATEADD(MINUTE, 15, @StartTime);
+
+INSERT INTO StudentQuiz (StudentID, QuizID, StartedAt, FinishedAt, Score) VALUES
+(86, @QuizID, @StartTime, @FinishTime, 8.5),
+(87, @QuizID, DATEADD(HOUR, 1, @StartTime), DATEADD(MINUTE, 20, DATEADD(HOUR, 1, @StartTime)), 7.2),
+(88, @QuizID, DATEADD(HOUR, 2, @StartTime), DATEADD(MINUTE, 18, DATEADD(HOUR, 2, @StartTime)), 9.1),
+(89, @QuizID, DATEADD(HOUR, 3, @StartTime), DATEADD(MINUTE, 25, DATEADD(HOUR, 3, @StartTime)), 6.8),
+(90, @QuizID, DATEADD(HOUR, 4, @StartTime), DATEADD(MINUTE, 22, DATEADD(HOUR, 4, @StartTime)), 5.5);
+
+-- Học sinh làm quiz Cơ học chất điểm  
+SET @QuizID = 115;
+SET @StartTime = DATEADD(DAY, -3, GETDATE());
+
+INSERT INTO StudentQuiz (StudentID, QuizID, StartedAt, FinishedAt, Score) VALUES
+(96, @QuizID, @StartTime, DATEADD(MINUTE, 12, @StartTime), 9.2),
+(86, @QuizID, DATEADD(HOUR, 1, @StartTime), DATEADD(MINUTE, 15, DATEADD(HOUR, 1, @StartTime)), 7.8),
+(88, @QuizID, DATEADD(HOUR, 2, @StartTime), DATEADD(MINUTE, 18, DATEADD(HOUR, 2, @StartTime)), 8.4),
+(90, @QuizID, DATEADD(HOUR, 3, @StartTime), DATEADD(MINUTE, 20, DATEADD(HOUR, 3, @StartTime)), 6.2);
+
+-- Thêm câu trả lời chi tiết cho các bài làm
+-- Đây chỉ là ví dụ cho một vài bài làm
+DECLARE @StudentQuizID INT;
+
+-- Lấy StudentQuizID đầu tiên và thêm câu trả lời
+SELECT TOP 1 @StudentQuizID = StudentQuizID FROM StudentQuiz WHERE StudentID = 86 AND QuizID = 111;
+
+INSERT INTO StudentAnswer (StudentQuizID, QuestionID, SelectedOption, IsCorrect, AnsweredAt) VALUES
+(@StudentQuizID, (SELECT TOP 1 QuestionID FROM Question WHERE QuizID = 111 AND Content LIKE N'Nghiệm của phương trình%'), 'B', 1, GETDATE()),
+(@StudentQuizID, (SELECT TOP 1 QuestionID FROM Question WHERE QuizID = 111 AND Content LIKE N'Điều kiện xác định%'), 'C', 1, GETDATE()),
+(@StudentQuizID, (SELECT TOP 1 QuestionID FROM Question WHERE QuizID = 111 AND Content LIKE N'Tập nghiệm của bất phương trình%'), 'A', 1, GETDATE()),
+(@StudentQuizID, (SELECT TOP 1 QuestionID FROM Question WHERE QuizID = 111 AND Content LIKE N'Giá trị của x²%'), 'D', 1, GETDATE()),
+(@StudentQuizID, (SELECT TOP 1 QuestionID FROM Question WHERE QuizID = 111 AND Content LIKE N'Phương trình x² - 5x%'), 'A', 0, GETDATE());
+
+-- Thêm một số quiz được lưu
+INSERT INTO SavedQuiz (StudentID, QuizID, SavedAt) VALUES
+(86, 112, GETDATE()),
+(86, 113, GETDATE()),
+(87, 111, GETDATE()),
+(87, 115, GETDATE()),
+(88, 114, GETDATE()),
+(89, 116, GETDATE()),
+(90, 117, GETDATE());
+
+-- Thêm một số like cho quiz
+INSERT INTO QuizLike (UserID, QuizID, LikedAt) VALUES
+(86, 111, GETDATE()),
+(87, 111, GETDATE()),
+(88, 111, GETDATE()),
+(86, 115, GETDATE()),
+(96, 115, GETDATE()),
+(90, 115, GETDATE()),
+(89, 112, GETDATE()),
+(91, 113, GETDATE());
+
+-- Thêm feedback
+INSERT INTO Feedback (StudentID, QuizID, Rating, Comment, SubmittedAt) VALUES
+(86, 111, 5, N'Bài kiểm tra rất hay và phù hợp với chương trình học', GETDATE()),
+(87, 111, 4, N'Câu hỏi tốt nhưng có thể thêm một số ví dụ', GETDATE()),
+(88, 111, 5, N'Excellente! Très bon quiz pour réviser', GETDATE()),
+(96, 115, 5, N'Quiz về vật lý rất thú vị và bổ ích', GETDATE()),
+(86, 115, 4, N'Cần thêm hình ảnh minh họa cho dễ hiểu hơn', GETDATE());
+
+-- Gán quiz cho lớp học
+INSERT INTO QuizAssignment (QuizID, ClassID, DueDate, AssignedAt) VALUES
+(111, (SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 10A1 - Toán'), DATEADD(DAY, 7, GETDATE()), GETDATE()),
+(112, (SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 10A1 - Toán'), DATEADD(DAY, 14, GETDATE()), GETDATE()),
+(115, (SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 11B1 - Vật Lý'), DATEADD(DAY, 10, GETDATE()), GETDATE()),
+(116, (SELECT TOP 1 ClassID FROM Classroom WHERE ClassName = N'Lớp 11B1 - Vật Lý'), DATEADD(DAY, 21, GETDATE()), GETDATE());
+
+-- Thêm tags cho câu hỏi
+INSERT INTO Tag (Name) VALUES
+(N'Phương trình'),
+(N'Bất phương trình'),
+(N'Hàm số'),
+(N'Cơ học'),
+(N'Nhiệt học'),
+(N'Điện học'),
+(N'Nguyên tử'),
+(N'Phân tử'),
+(N'Tế bào'),
+(N'Di truyền');
+
+-- Gán tag cho câu hỏi
+INSERT INTO QuestionTag (QuestionID, TagID) VALUES
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Nghiệm của phương trình%'), (SELECT TagID FROM Tag WHERE Name = N'Phương trình')),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Tập nghiệm của bất phương trình%'), (SELECT TagID FROM Tag WHERE Name = N'Bất phương trình')),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Đơn vị của vận tốc%'), (SELECT TagID FROM Tag WHERE Name = N'Cơ học')),
+((SELECT TOP 1 QuestionID FROM Question WHERE Content LIKE N'Công thức tính gia tốc%'), (SELECT TagID FROM Tag WHERE Name = N'Cơ học'));
+
+PRINT 'Đã bổ sung thêm dữ liệu mẫu thành công!'
+
