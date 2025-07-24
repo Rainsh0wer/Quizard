@@ -24,6 +24,11 @@ namespace QuizardApp.Services
             {
                 _navigationWindow.NavigationService.Navigate(page);
             }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Navigation failed: NavigationWindow or NavigationService is null");
+                MessageBox.Show($"Navigation failed: NavigationWindow is {(_navigationWindow == null ? "null" : "not null")}, NavigationService is {(_navigationWindow?.NavigationService == null ? "null" : "not null")}");
+            }
         }
 
         public void GoBack()
