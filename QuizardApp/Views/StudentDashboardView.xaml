@@ -3,9 +3,223 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:QuizardApp.Views"
              mc:Ignorable="d"
-             d:DesignHeight="400" d:DesignWidth="600">
-    <Grid>
-        <TextBlock Text="Chào mừng học sinh!" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    </Grid>
+             d:DesignHeight="700" d:DesignWidth="1200">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Welcome Header -->
+            <Border Grid.Row="0" Background="#FF007ACC" CornerRadius="8" Padding="20" Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="{Binding WelcomeMessage}" 
+                               FontSize="24" 
+                               FontWeight="Bold" 
+                               Foreground="White"/>
+                    <TextBlock Text="Ready to take some quizzes?" 
+                               FontSize="14" 
+                               Foreground="White" 
+                               Opacity="0.9"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Quick Stats -->
+            <Grid Grid.Row="1" Margin="0,0,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Background="#FFF8F9FA" BorderBrush="#FFdee2e6" BorderThickness="1" CornerRadius="4" Padding="15" Margin="0,0,10,0">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding TotalQuizzesAvailable}" FontSize="32" FontWeight="Bold" Foreground="#FF007ACC" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Available Quizzes" FontSize="12" Foreground="#FF6C757D" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Background="#FFF8F9FA" BorderBrush="#FFdee2e6" BorderThickness="1" CornerRadius="4" Padding="15" Margin="0,0,10,0">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding CompletedQuizzes}" FontSize="32" FontWeight="Bold" Foreground="#FF28A745" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Completed" FontSize="12" Foreground="#FF6C757D" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="2" Background="#FFF8F9FA" BorderBrush="#FFdee2e6" BorderThickness="1" CornerRadius="4" Padding="15" Margin="0,0,10,0">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding AverageScore, StringFormat=F1}" FontSize="32" FontWeight="Bold" Foreground="#FFFD7E14" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Average Score %" FontSize="12" Foreground="#FF6C757D" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="3" Background="#FFF8F9FA" BorderBrush="#FFdee2e6" BorderThickness="1" CornerRadius="4" Padding="15">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding EnrolledClasses}" FontSize="32" FontWeight="Bold" Foreground="#FF6F42C1" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Classes Joined" FontSize="12" Foreground="#FF6C757D" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Main Content -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Available Quizzes -->
+                <Border Grid.Column="0" Background="White" BorderBrush="#FFdee2e6" BorderThickness="1" CornerRadius="8" Padding="20" Margin="0,0,10,0">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="📝 Available Quizzes" FontSize="18" FontWeight="Bold"/>
+                            <Button Grid.Column="1" Content="🔄 Refresh" Command="{Binding RefreshCommand}" 
+                                    Background="#FF17A2B8" Foreground="White" Padding="8,4" BorderThickness="0" FontSize="12"/>
+                        </Grid>
+                        
+                        <ListView ItemsSource="{Binding AssignedQuizzes}" MaxHeight="400">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#FFF8F9FA" CornerRadius="4" Padding="12" Margin="0,2">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text="{Binding Title}" FontWeight="SemiBold"/>
+                                                <TextBlock Text="{Binding Description}" FontSize="12" Foreground="#FF6C757D" TextTrimming="CharacterEllipsis"/>
+                                                <TextBlock Text="{Binding Subject.Name, StringFormat=Subject: {0}}" FontSize="11" Foreground="#FF007ACC"/>
+                                            </StackPanel>
+                                            
+                                            <Button Grid.Column="1" 
+                                                    Content="Take Quiz" 
+                                                    Command="{Binding DataContext.TakeQuizCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                                    CommandParameter="{Binding}"
+                                                    Background="#FF007ACC" 
+                                                    Foreground="White" 
+                                                    Padding="12,6" 
+                                                    BorderThickness="0"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <!-- Subject Search Section -->
+                        <Separator Margin="0,20"/>
+                        <TextBlock Text="🔍 Search Subjects" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0" Text="{Binding SearchSubjectText, UpdateSourceTrigger=PropertyChanged}" 
+                                     Padding="8" FontSize="14" Margin="0,0,10,0" 
+                                     Tag="Search subjects..."/>
+                            <Button Grid.Column="1" Content="Search" Command="{Binding SearchSubjectsCommand}"
+                                    Background="#FF28A745" Foreground="White" Padding="12,8" BorderThickness="0"/>
+                        </Grid>
+                        
+                        <ListView ItemsSource="{Binding AvailableSubjects}" MaxHeight="200" Margin="0,10,0,0">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#FFF0F8FF" CornerRadius="4" Padding="8" Margin="0,1">
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="12"/>
+                                            <TextBlock Text="{Binding Description}" FontSize="10" Foreground="#FF6C757D"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </Border>
+
+                <!-- Side Panel -->
+                <StackPanel Grid.Column="1">
+                    <!-- Quick Actions -->
+                    <Border Background="White" BorderBrush="#FFdee2e6" BorderThickness="1" CornerRadius="8" Padding="20" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="🚀 Quick Actions" FontSize="16" FontWeight="Bold" Margin="0,0,0,15"/>
+                            
+                            <Button Content="🎓 Join Class" 
+                                    Command="{Binding JoinClassCommand}"
+                                    Background="#FF28A745" 
+                                    Foreground="White" 
+                                    Padding="12,8" 
+                                    BorderThickness="0" 
+                                    Margin="0,0,0,10"/>
+                            
+                            <Button Content="📊 View My Results" 
+                                    Command="{Binding ViewResultsCommand}"
+                                    Background="#FFFD7E14" 
+                                    Foreground="White" 
+                                    Padding="12,8" 
+                                    BorderThickness="0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- My Classes -->
+                    <Border Background="White" BorderBrush="#FFdee2e6" BorderThickness="1" CornerRadius="8" Padding="20" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="🎓 My Classes" FontSize="16" FontWeight="Bold" Margin="0,0,0,15"/>
+                            <ListView ItemsSource="{Binding MyClasses}" MaxHeight="150">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="#FFF8F9FA" CornerRadius="4" Padding="8" Margin="0,2">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="12"/>
+                                                <TextBlock Text="{Binding Teacher.FullName, StringFormat=Teacher: {0}}" FontSize="10" Foreground="#FF6C757D"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Recent Results -->
+                    <Border Background="White" BorderBrush="#FFdee2e6" BorderThickness="1" CornerRadius="8" Padding="20">
+                        <StackPanel>
+                            <TextBlock Text="📈 Recent Results" FontSize="16" FontWeight="Bold" Margin="0,0,0,15"/>
+                            <ListView ItemsSource="{Binding RecentResults}" MaxHeight="200">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="#FFF8F9FA" CornerRadius="4" Padding="8" Margin="0,2">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Quiz.Title}" FontWeight="SemiBold" FontSize="12"/>
+                                                <TextBlock Text="{Binding Score, StringFormat=Score: {0:F1}%}" FontSize="11" Foreground="#FF007ACC"/>
+                                                                                                 <TextBlock Text="{Binding CompletedAt, StringFormat='Completed: {0:MMM dd}'}" FontSize="10" Foreground="#FF6C757D"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+
+            <!-- Loading Overlay -->
+            <Grid Grid.RowSpan="3" Background="#88000000" Visibility="{Binding IsLoading, Converter={x:Static local:BooleanToVisibilityConverter.Instance}}">
+                <Border Background="White" CornerRadius="8" Padding="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center">
+                        <ProgressBar IsIndeterminate="True" Width="200" Height="4" Margin="0,0,0,10"/>
+                        <TextBlock Text="Loading..." FontSize="14" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>
