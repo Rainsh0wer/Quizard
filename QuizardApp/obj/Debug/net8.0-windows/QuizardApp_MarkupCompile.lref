@@ -1,5 +1,7 @@
-﻿
+﻿/workspace/QuizardApp/obj/Debug/net8.0-windows/GeneratedInternalTypeHelper.g.cs
 
 F/workspace/QuizardApp/Views/MainWindow.xaml;;
+F/workspace/QuizardApp/Views/StudentDashboardView.xaml;;
+F/workspace/QuizardApp/Views/TeacherDashboardView.xaml;;
 F/workspace/QuizardApp/Views/ViewTemplates.xaml;;
 
